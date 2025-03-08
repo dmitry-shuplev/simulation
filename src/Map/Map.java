@@ -12,7 +12,8 @@ public class Map {
 
     public void addEntitys() {
         Coordinate coordinate = new Coordinate(1, 1);
-        map.put(coordinate, new Herbvore());
+        Herbvore herb = new Herbvore(coordinate);
+        //map.put(herb.);
 
         coordinate = new Coordinate(2, 2);
         map.put(coordinate, new Rock());
