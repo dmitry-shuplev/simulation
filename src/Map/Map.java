@@ -19,24 +19,4 @@ public class Map {
         return map;
     }
 
-
-    public void showMap() {
-        for (int y = yMax; y >= 0; y--) {
-            for (int x = 0; x < xMax; x++) {
-                Coordinate coordinate = new Coordinate(x, y);
-                if (map.get(coordinate) == null) {
-                    System.out.print(" * ");
-                } else {
-                    System.out.print(" " + map.get(coordinate).getView() + " ");
-                }
-            }
-            System.out.print("\n");
-        }
-        Coordinate co1 = new Coordinate(2, 2);
-        Coordinate co2 = new Coordinate(2, 2);
-        System.out.println(co2.equals(co1));
-        System.out.println(map.get(co1));
-    }
-
-
 }

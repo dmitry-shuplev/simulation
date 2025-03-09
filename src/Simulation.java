@@ -10,6 +10,7 @@ public class Simulation {
         addEntity(map, entity);
 
         map.showMap();
+        View.showMap(map);
     }
 
 private static void addEntity(Map map, Entity entity){
