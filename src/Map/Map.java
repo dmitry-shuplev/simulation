@@ -13,7 +13,7 @@ public class Map {
     public void addEntitys() {
         Coordinate coordinate = new Coordinate(1, 1);
         Herbvore herb = new Herbvore(coordinate);
-        //map.put(herb.);
+        map.put(herb.getCoordinate(), herb);
 
         coordinate = new Coordinate(2, 2);
         map.put(coordinate, new Rock());
