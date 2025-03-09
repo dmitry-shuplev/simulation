@@ -1,29 +1,24 @@
 package Map;
 
+import Config.Settings;
 import Subjects.*;
-
+import Config.Settings.*;
 import java.util.HashMap;
 
-public class Map {
-    private final int xMax = 10;
-    private final int yMax = 10;
+import static Config.Settings.X_MAX;
+import static Config.Settings.Y_MAX;
 
+
+public class Map {
+    private final int xMax = X_MAX;
+    private final int yMax = Y_MAX;
     private HashMap<Coordinate, Entity> map = new HashMap<>();
 
-    public void addEntitys() {
-        Coordinate coordinate = new Coordinate(1, 1);
-        Herbvore herb = new Herbvore(coordinate);
-        map.put(herb.getCoordinate(), herb);
 
-        coordinate = new Coordinate(2, 2);
-        map.put(coordinate, new Rock());
-
-        coordinate = new Coordinate(5, 5);
-        map.put(coordinate, new Predator());
-
-        coordinate = new Coordinate(9, 9);
-        map.put(coordinate, new Grass(coordinate));
+    public HashMap<Coordinate, Entity> getMap() {
+        return map;
     }
+
 
     public void showMap() {
         for (int y = yMax; y >= 0; y--) {
@@ -32,7 +27,7 @@ public class Map {
                 if (map.get(coordinate) == null) {
                     System.out.print(" * ");
                 } else {
-                    System.out.print(" "+map.get(coordinate).getView()+" ");
+                    System.out.print(" " + map.get(coordinate).getView() + " ");
                 }
             }
             System.out.print("\n");
