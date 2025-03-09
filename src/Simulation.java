@@ -9,7 +9,6 @@ public class Simulation {
         Entity entity = new Herbvore(new Coordinate(1,1));
         addEntity(map, entity);
 
-        map.showMap();
         View.showMap(map);
     }
 
