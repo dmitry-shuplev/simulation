@@ -10,9 +10,8 @@ import static Config.Settings.Y_MAX;
 public class View {
 
     public static void showMap(Map map) {
-        clearConsole();
-        for (int y = Y_MAX; y >= 0; y--) {
-            for (int x = 0; x < X_MAX; x++) {
+        for (int y = Y_MAX-1; y >= 0; y--) {
+            for (int x = 0; x <= X_MAX-1; x++) {
                 Coordinate coordinate = new Coordinate(x, y);
                 if (map.getMap().get(coordinate) == null) {
                     System.out.print(" * ");
@@ -22,6 +21,7 @@ public class View {
             }
             System.out.print("\n");
         }
+        System.out.println("_______________________________");
 
     }
 
