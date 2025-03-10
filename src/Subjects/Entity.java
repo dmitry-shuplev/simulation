@@ -15,18 +15,22 @@ public abstract class Entity {
     }
 
     public void move(Direction direction, Map map){
-        map.getMap().remove(coordinate);
+        Coordinate newCoordinate = new Coordinate(coordinate.x, coordinate.y);
         switch (direction){
-        case UP: this.coordinate.y++;
+        case UP: newCoordinate.y++;
         break;
-        case DOWN: this.coordinate.y--;
+        case DOWN: newCoordinate.y--;
             break;
-        case LEFT: this.coordinate.x--;
+        case LEFT: newCoordinate.x--;
             break;
-        case RIGHT: this.coordinate.x++;
+        case RIGHT: newCoordinate.x++;
             break;
     }
-map.getMap().put(coordinate, this);
+    if(newCoordinate.isCoordinateCorrect()){
+       map.getMap().remove(coordinate);
+        coordinate = newCoordinate;
+        map.getMap().put(coordinate, this);
+    }
         }
 
     public Coordinate getCoordinate() {
