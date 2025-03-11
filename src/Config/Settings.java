@@ -13,4 +13,10 @@ public class Settings {
         RIGHT,
         LEFT
     }
+    public enum EntityType{
+        ROCK,
+        GRASS,
+        HERBVORE,
+        PREDATOR
+    }
 }

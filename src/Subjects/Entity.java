@@ -5,7 +5,9 @@ import Map.*;
 
 
 public abstract class Entity {
+
     public abstract char getView();
+
 
     private Coordinate coordinate;
 
