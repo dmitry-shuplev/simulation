@@ -9,8 +9,8 @@ public class Grass extends Entity {
 private Coordinate coordinate;
     
     public Grass(Coordinate coordinate){
+        setCoordinate(coordinate);
         this.quantity = START_QUANTITY;
-        this.coordinate = coordinate;
     }
 
     public char getView() {

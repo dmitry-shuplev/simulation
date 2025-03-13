@@ -2,10 +2,10 @@ package Subjects;
 
 import Map.Coordinate;
 
-public class Predator extends Creature{
-    private final char representSymbol = 'P';
+public class Tree extends Entity {
+private final char representSymbol = 'T';
 
-    public Predator(Coordinate coordinate) {
+    public Tree(Coordinate coordinate) {
         setCoordinate(coordinate);
     }
 

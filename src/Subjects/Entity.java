@@ -39,5 +39,7 @@ public abstract class Entity {
     public void setCoordinate(Coordinate coordinate) {
         this.coordinate = coordinate;
     }
+
+
 }
 

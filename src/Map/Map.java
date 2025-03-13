@@ -1,8 +1,6 @@
 package Map;
 
-import Config.Settings;
 import Subjects.*;
-import Config.Settings.*;
 
 import java.util.HashMap;
 
@@ -15,21 +13,42 @@ public class Map {
     private final int yMax = Y_MAX;
     private HashMap<Coordinate, Entity> map = new HashMap<>();
 
+    public Map(){
+        filingMap();
+    }
     public HashMap<Coordinate, Entity> getMap() {
         return map;
     }
 
-    public void filingMap() {
-        for (int i = TOTAL_HERBVORE; i > 0; i--) {
-            Herbvore herb = cerateHerbvore();
-            this.map.put(herb.getCoordinate(), herb);
+    private void filingMap() {
+        for (Subjects entity : Subjects.values()) {
+            for (int i = entity.getTotalObjects(); i > 0; i--) {
+                createSomeEntity(entity.getEntityName());
+            }
         }
-
     }
 
-    private Herbvore cerateHerbvore() {
-        Herbvore herb = new Herbvore(Coordinate.getRandCoordinate(this));
-        return herb;
+    private void createSomeEntity(String entityName) {
+        Coordinate coordinate = Coordinate.getRandCoordinate(this);
+        try {
+            Class<?> clazz = Class.forName("Subjects." + entityName);
+            var constructor = clazz.getDeclaredConstructor(coordinate.getClass());
+            Object entity = constructor.newInstance(coordinate);
+            this.map.put(coordinate, (Entity) entity);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+     /*   try {int a =2;
+            Class<?> entity = Class.forName("Herbvore");
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+*/
+        //Herbvore herb = new Herbvore(Coordinate.getRandCoordinate(this));
+        //return herb;
     }
 
 
