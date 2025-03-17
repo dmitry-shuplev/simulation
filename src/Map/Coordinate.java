@@ -17,7 +17,7 @@ public class Coordinate {
     }
 
     public boolean isCoordinateCorrect() {
-        if (this.x < 0 || this.y < 0 || this.x > X_MAX - 1 || this.y > Y_MAX - 1) {
+        if (this.x < 0 || this.y < 0 || this.x > MAP_LENGTH - 1 || this.y > MAP_HEIGHT - 1) {
             return false;
         }
         return true;
@@ -25,8 +25,8 @@ public class Coordinate {
 
     public static Coordinate getRandCoordinate(Map map) {
         Random rand = new Random();
-        int x = rand.nextInt(0, X_MAX - 1);
-        int y = rand.nextInt(0, Y_MAX - 1);
+        int x = rand.nextInt(0, MAP_LENGTH - 1);
+        int y = rand.nextInt(0, MAP_HEIGHT - 1);
         Coordinate coordinate = new Coordinate(x, y);
         if (!map.isFieldEmpty(coordinate)){
             System.out.println("Ошибка. Обьект с такими координатами уже существует.");

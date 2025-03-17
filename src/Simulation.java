@@ -12,8 +12,9 @@ public class Simulation {
         Map map = new Map();
         for (int i = STEPS; i > 0; i--) {
 
-            View.showMap(map);
-            View.showEntitys(map);
+           // View.showMap(map);
+           // View.showEntitys(map);
+            View.showMapSwing(map);
         }
 
 

@@ -9,8 +9,8 @@ import static Config.Settings.*;
 
 public class Map {
 
-    private final int xMax = X_MAX;
-    private final int yMax = Y_MAX;
+    private final int xMax = MAP_LENGTH;
+    private final int yMax = MAP_HEIGHT;
     private HashMap<Coordinate, Entity> map = new HashMap<>();
 
     public Map(){
