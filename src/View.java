@@ -44,39 +44,12 @@ public class View {
     }
 
     public static void showMapSwing(Map map){
-        JFrame frame = new JFrame();
-        frame.setSize(1200, 800);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        //GraphModel graphModel = new GraphModel();
-
-        BorderLayout borderLayout = new BorderLayout();
-       // FieldComponent field = new FieldComponent(graphModel);
-        Button buttonStartWide = new Button("Сгенерировать карту");
-        Button buttonStartDeep = new Button("Сделать ход");
-        Button buttonReset = new Button("Запустить карту");
-        Button buttonStepWide = new Button("Шаг в ширину");
-        Button buttonStepDeep = new Button("Шаг в глубину");
-
-        JPanel buttons = new JPanel(new FlowLayout(FlowLayout.TRAILING));
-        buttons.add(buttonStartWide);
-        buttons.add(buttonStartDeep);
-        buttons.add(buttonStepWide);
-        buttons.add(buttonStepDeep);
-        buttons.add(buttonReset);
-
-        frame.getContentPane().setLayout(borderLayout);
-        //frame.getContentPane().add(field, BorderLayout.CENTER);
-        frame.getContentPane().add(buttons, BorderLayout.PAGE_END);
-
-        /*buttonReset.addActionListener(e -> field.clear());
-        buttonStartWide.addActionListener(e -> field.startWide());
-        buttonStartDeep.addActionListener(e -> field.startDeep());
-        buttonStepWide.addActionListener(e -> field.stepWide());
-        buttonStepDeep.addActionListener(e -> field.stepDeep());*/
-
-        frame.setVisible(true);
-       // field.clear();
+JFrame frame = new JFrame(){};
+frame.setVisible(true);
+frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+frame.setSize(1200,600);
+frame.setLocation(150, 50);
+frame.setTitle("Это проект Симуляция Road_map Сергея Жукова");
     }
 
 

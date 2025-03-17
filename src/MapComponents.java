@@ -1,6 +1,6 @@
 import javax.swing.*;
-import Map.*;
+import Map.Map;
 
-public class MapComponents(Map map) extends JComponent {
+public class MapComponents extends JComponent {
 
 }
