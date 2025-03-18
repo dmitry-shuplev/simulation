@@ -1,7 +1,7 @@
 package Config;
 
 public class Settings {
-    public static final int MAP_WIDTH = 50;
+    public static final int MAP_WIDTH = 25;
     public static final int MAP_HEIGHT = 10;
     public static final int STEPS = 1;
 
@@ -15,9 +15,9 @@ public class Settings {
     public enum Subjects {
         ROCKS(15, "Rock"),
         GRASS(10, "Grass"),
-        TREES(5,"Tree"),
-        HERBVORE(20, "Herbvore"),
-        PREDSTOR(5, "Predator");
+        TREES(30,"Tree"),
+        HERBVORE(2, "Herbvore"),
+        PREDSTOR(2, "Predator");
 
         private final int totalObjects;
         private final String entityName;
