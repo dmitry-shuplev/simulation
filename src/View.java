@@ -6,14 +6,14 @@ import javax.swing.*;
 import java.awt.*;
 import java.lang.ref.Cleaner;
 
-import static Config.Settings.MAP_LENGTH;
+import static Config.Settings.MAP_WIDTH;
 import static Config.Settings.MAP_HEIGHT;
 
 public class View {
 
     public static void showMap(Map map) {
-        for (int y = MAP_HEIGHT-1; y >= 0; y--) {
-            for (int x = 0; x <= MAP_LENGTH-1; x++) {
+        for (int y = MAP_HEIGHT - 1; y >= 0; y--) {
+            for (int x = 0; x <= MAP_WIDTH - 1; x++) {
                 Coordinate coordinate = new Coordinate(x, y);
                 if (map.getMap().get(coordinate) == null) {
                     System.out.print(" * ");
@@ -43,15 +43,21 @@ public class View {
         }
     }
 
-    public static void showMapSwing(Map map){
-JFrame frame = new JFrame(){};
-frame.setVisible(true);
-frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-frame.setSize(1200,600);
-frame.setLocation(150, 50);
-frame.setTitle("Это проект Симуляция Road_map Сергея Жукова");
-    }
+    public static void showMapSwing(Map map) {
+        Map currentMap = map;
+        JFrame frame = new JFrame() {
+        };
+        frame.setVisible(true);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(1200, 600);
+        frame.setLocation(150, 50);
+        frame.setTitle("Это проект Симуляция Road_map Сергея Жукова");
 
+        MapComponents field = new MapComponents(map);
+        frame.getContentPane().add(field, BorderLayout.CENTER);
+
+
+    }
 
 
 }

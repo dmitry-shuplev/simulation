@@ -1,7 +1,7 @@
 package Config;
 
 public class Settings {
-    public static final int MAP_LENGTH = 20;
+    public static final int MAP_WIDTH = 50;
     public static final int MAP_HEIGHT = 10;
     public static final int STEPS = 1;
 
