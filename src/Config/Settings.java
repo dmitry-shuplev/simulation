@@ -3,7 +3,7 @@ package Config;
 public class Settings {
     public static final int MAP_WIDTH = 25;
     public static final int MAP_HEIGHT = 10;
-    public static final int STEPS = 1;
+    public static final int STEPS = 3;
 
     public enum Direction {
         UP,

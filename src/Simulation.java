@@ -8,17 +8,20 @@ import Config.Settings.*;
 import static Config.Settings.*;
 
 public class Simulation {
+
     public static void main(String[] args) throws InterruptedException {
         Map map = new Map();
-        for (int i = STEPS; i > 0; i--) {
+        View.createViewMap(map);
 
-           // View.showMap(map);
-           // View.showEntitys(map);
-            View.showMapSwing(map);
+        for (int i = STEPS; i > 0; i--) {
+            for (Entity entity : map.getMap().values()) {
+                if (entity.getView() == 'H') {
+                    entity.move(Direction.DOWN, map);
+                }
+            }
+
+
         }
 
-
     }
-
-
 }
