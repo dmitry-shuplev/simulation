@@ -44,7 +44,7 @@ public class Map {
     }
 
 
-    public ArrayList<Coordinate> getNaighuds(Coordinate rootCoodrinate) {
+    public ArrayList<Coordinate> getNaighbors(Coordinate rootCoodrinate) {
         ArrayList<Coordinate> neighudsCoordinate = new ArrayList<>();
         for (Direction direction : Direction.values()) {
             if (!rootCoodrinate.equals(rootCoodrinate.getNextStepCoordinate(direction))) {

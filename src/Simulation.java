@@ -18,13 +18,11 @@ public class Simulation {
         map.getMap().put(herb1.getCoordinate(), herb1);
         View.createViewMap(map);
         Random random = new Random();
+        Entity ent = herb1.finedObject(map, 'T');
+        System.out.print(ent.getClass());
+        System.out.println(ent.getCoordinate());
         for(int s = 0; s<STEPS; s++){
-            herb1.move(Direction.values()[random.nextInt(4)], map);
-            herb1.move(Direction.values()[random.nextInt(4)], map);
-          View.updateMap(map);
-          sleep(2000);
-            System.out.println(herb1.getCoordinate().toString());
-            System.out.println(map.getMap().size());
+
         }
 
     }
