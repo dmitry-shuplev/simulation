@@ -13,10 +13,10 @@ public class Settings {
     }
 
     public enum Subjects {
-        ROCKS(15, "Rock"),
-        GRASS(10, "Grass"),
-        TREES(30,"Tree"),
-        HERBVORE(2, "Herbvore"),
+        ROCKS(1, "Rock"),
+        GRASS(1, "Grass"),
+        TREES(3,"Tree"),
+        HERBVORE(0, "Herbvore"),
         PREDSTOR(2, "Predator");
 
         private final int totalObjects;
