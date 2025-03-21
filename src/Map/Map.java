@@ -2,6 +2,7 @@ package Map;
 
 import Subjects.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import static Config.Settings.*;
@@ -13,11 +14,38 @@ public class Map {
     private final int yMax = MAP_HEIGHT;
     private HashMap<Coordinate, Entity> map = new HashMap<>();
 
-    public Map(){
+    public Map() {
         filingMap();
     }
+
     public HashMap<Coordinate, Entity> getMap() {
         return map;
+    }
+
+    public boolean isFieldEmpty(Coordinate coordinate) {
+        if (this.getMap().containsKey(coordinate)) {
+            return false;
+        }
+        return true;
+    }
+
+    public Coordinate[] getNeighuds(Coordinate rootCoordinate) {
+        Coordinate[] naighuds = new Coordinate[4];
+
+        return naighuds;
+    }
+
+    public HashMap<Coordinate, Entity> gemMapCopy() {
+        return new HashMap<>(map);
+    }
+
+
+    public ArrayList<Coordinate> getNaighuds(Coordinate rootCoodrinate) {
+        ArrayList<Coordinate> neighudsCoordinate = new ArrayList<>();
+        for (Direction direction : Direction.values()) {
+            neighudsCoordinate.add(rootCoodrinate.getNextStepCoordinate(direction));
+            }
+        return neighudsCoordinate;
     }
 
     private void filingMap() {
@@ -38,26 +66,6 @@ public class Map {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
-     /*   try {int a =2;
-            Class<?> entity = Class.forName("Herbvore");
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-*/
-        //Herbvore herb = new Herbvore(Coordinate.getRandCoordinate(this));
-        //return herb;
     }
-
-
-    public boolean isFieldEmpty(Coordinate coordinate) {
-        if (this.getMap().containsKey(coordinate)) {
-            return false;
-        }
-        return true;
-    }
-
 
 }
