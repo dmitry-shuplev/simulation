@@ -4,12 +4,11 @@ import Subjects.Entity;
 
 import javax.swing.*;
 import java.awt.*;
-import java.lang.ref.Cleaner;
 
 public class View {
+private static JFrame frame = new JFrame();
 
     public static void createViewMap(Map map){
-        JFrame frame = new JFrame() {};
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1200, 600);
@@ -18,7 +17,12 @@ public class View {
 
         MapComponents field = new MapComponents(map);
         frame.getContentPane().add(field, BorderLayout.CENTER);
+
     }
 
+    public static void updateMap(Map map){
+        MapComponents field = new MapComponents(map);
+        frame.getContentPane().add(field, BorderLayout.CENTER);
+    }
 
 }

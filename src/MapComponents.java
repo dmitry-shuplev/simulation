@@ -32,11 +32,6 @@ public class MapComponents extends JComponent {
         treeImage = new ImageIcon(getClass().getResource("/images/tree.png")).getImage();
         rockImage = new ImageIcon(getClass().getResource("/images/rock2.png")).getImage();
 
-
-
-       // herbvoreImage = new ImageIcon("/images/herbivore.png").getImage();
-
-
         int cellSize = getWidth() / Settings.MAP_WIDTH;
 
         for (int y = 0; y < Settings.MAP_HEIGHT; y++) {
@@ -72,11 +67,11 @@ public class MapComponents extends JComponent {
                     default:
                         g.setColor(Color.LIGHT_GRAY);
                         g.fillRect(x * cellSize, y * cellSize, (int) (cellSize / 1.2), (int) (cellSize / 1.2));
-
                 }
 
             }
         }
+        repaint();
     }
 
     private char getEntitySymbol(int x, int y) {

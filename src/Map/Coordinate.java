@@ -39,10 +39,10 @@ public class Coordinate {
         Coordinate newCoordinate = new Coordinate(this.x, this.y);
         switch (direction) {
             case UP:
-                newCoordinate.y = this.y+1;
+                newCoordinate.y = this.y-1;
                 break;
             case DOWN:
-                newCoordinate.y = this.y-1;
+                newCoordinate.y = this.y+1;
                 break;
             case LEFT:
                 newCoordinate.x = this.x-1;
@@ -51,7 +51,7 @@ public class Coordinate {
                 newCoordinate.x = this.x+1;
                 break;
         }
-        return newCoordinate;
+        return newCoordinate.isCoordinateCorrect()?newCoordinate:this;
     }
 
     @Override

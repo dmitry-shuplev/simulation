@@ -29,6 +29,10 @@ public class Map {
         return true;
     }
 
+    public void addEntyty(Coordinate cordinate, Entity entity){
+        map.put(cordinate, entity);
+    }
+
     public Coordinate[] getNeighuds(Coordinate rootCoordinate) {
         Coordinate[] naighuds = new Coordinate[4];
 
@@ -43,8 +47,10 @@ public class Map {
     public ArrayList<Coordinate> getNaighuds(Coordinate rootCoodrinate) {
         ArrayList<Coordinate> neighudsCoordinate = new ArrayList<>();
         for (Direction direction : Direction.values()) {
-            neighudsCoordinate.add(rootCoodrinate.getNextStepCoordinate(direction));
+            if (!rootCoodrinate.equals(rootCoodrinate.getNextStepCoordinate(direction))) {
+                neighudsCoordinate.add(rootCoodrinate.getNextStepCoordinate(direction));
             }
+        }
         return neighudsCoordinate;
     }
 

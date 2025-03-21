@@ -1,6 +1,8 @@
 package Subjects;
 
+import Config.Settings;
 import Map.Coordinate;
+import Map.Map;
 
 public class Herbvore extends Creature {
 
@@ -13,4 +15,5 @@ public class Herbvore extends Creature {
     public char getView() {
         return representSymbol;
     }
+
 }
