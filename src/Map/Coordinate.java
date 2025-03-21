@@ -35,6 +35,25 @@ public class Coordinate {
         return coordinate;
     }
 
+    public Coordinate getNextStepCoordinate(Direction direction) {
+        Coordinate newCoordinate = new Coordinate(this.x, this.y);
+        switch (direction) {
+            case UP:
+                newCoordinate.y = this.y+1;
+                break;
+            case DOWN:
+                newCoordinate.y = this.y-1;
+                break;
+            case LEFT:
+                newCoordinate.x = this.x-1;
+                break;
+            case RIGHT:
+                newCoordinate.x = this.x+1;
+                break;
+        }
+        return newCoordinate;
+    }
+
     @Override
     public String toString() {
         return "Coordinate{" +
