@@ -62,8 +62,8 @@ public class MapComponents extends JComponent {
                         g.setColor(new Color(139, 69, 19));
                         g.fillRect(x * cellSize, y * cellSize, (int) (cellSize / 1.2), (int) (cellSize / 1.2));
                         g.drawImage(rockImage, x * cellSize, y * cellSize, (int) (cellSize / 1.2), (int) (cellSize / 1.2),this);
-
                         break;
+
                     default:
                         g.setColor(Color.LIGHT_GRAY);
                         g.fillRect(x * cellSize, y * cellSize, (int) (cellSize / 1.2), (int) (cellSize / 1.2));

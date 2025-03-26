@@ -1,6 +1,7 @@
 package Map;
 
 import Subjects.*;
+import Config.Settings;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -44,11 +45,11 @@ public class Map {
     }
 
 
-    public ArrayList<Coordinate> getNaighbors(Coordinate rootCoodrinate) {
+    public ArrayList<Coordinate> getNaighbors(Coordinate rootCoordinate) {
         ArrayList<Coordinate> neighudsCoordinate = new ArrayList<>();
         for (Direction direction : Direction.values()) {
-            if (!rootCoodrinate.equals(rootCoodrinate.getNextStepCoordinate(direction))) {
-                neighudsCoordinate.add(rootCoodrinate.getNextStepCoordinate(direction));
+            if (!rootCoordinate.equals(rootCoordinate.getNextStepCoordinate(direction))) {
+                neighudsCoordinate.add(rootCoordinate.getNextStepCoordinate(direction));
             }
         }
         return neighudsCoordinate;

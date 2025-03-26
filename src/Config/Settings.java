@@ -4,6 +4,8 @@ public class Settings {
     public static final int MAP_WIDTH = 15;
     public static final int MAP_HEIGHT = 7;
     public static final int STEPS = 10;
+    public static final int MOVE_PRICE=10;
+
 
     public enum Direction {
         UP,
@@ -15,7 +17,7 @@ public class Settings {
     public enum Subjects {
         ROCKS(1, "Rock"),
         GRASS(1, "Grass"),
-        TREES(3,"Tree"),
+        TREES(40,"Tree"),
         HERBVORE(0, "Herbvore"),
         PREDSTOR(2, "Predator");
 

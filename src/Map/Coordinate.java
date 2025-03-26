@@ -16,6 +16,11 @@ public class Coordinate {
         this.y = y;
     }
 
+    public static int getHeuristicCoast(Coordinate start, Coordinate finish){
+        return (Math.abs(finish.x-start.x)+Math.abs(finish.y-start.y) - 1)*10;
+    }
+
+
     public boolean isCoordinateCorrect() {
         if (this.x < 0 || this.y < 0 || this.x > MAP_WIDTH - 1 || this.y > MAP_HEIGHT - 1) {
             return false;
@@ -28,7 +33,7 @@ public class Coordinate {
         int x = rand.nextInt(0, MAP_WIDTH - 1);
         int y = rand.nextInt(0, MAP_HEIGHT - 1);
         Coordinate coordinate = new Coordinate(x, y);
-        if (!map.isFieldEmpty(coordinate)){
+        if (!map.isFieldEmpty(coordinate)) {
             System.out.println("Ошибка. Обьект с такими координатами уже существует.");
             getRandCoordinate(map);
         }
@@ -39,19 +44,27 @@ public class Coordinate {
         Coordinate newCoordinate = new Coordinate(this.x, this.y);
         switch (direction) {
             case UP:
-                newCoordinate.y = this.y-1;
+                newCoordinate.y = this.y - 1;
                 break;
             case DOWN:
-                newCoordinate.y = this.y+1;
+                newCoordinate.y = this.y + 1;
                 break;
             case LEFT:
-                newCoordinate.x = this.x-1;
+                newCoordinate.x = this.x - 1;
                 break;
             case RIGHT:
-                newCoordinate.x = this.x+1;
+                newCoordinate.x = this.x + 1;
                 break;
         }
-        return newCoordinate.isCoordinateCorrect()?newCoordinate:this;
+        return newCoordinate.isCoordinateCorrect() ? newCoordinate : this;
+    }
+
+    public Direction getDirection(Coordinate start) {
+        if(this.x == start.x && this.y<start.y){return Direction.DOWN;}
+        else if (this.x == start.x && this.y>start.y) {return Direction.UP;}
+        else if (this.x>start.x && this.y==start.y) {return Direction.RIGHT;}
+        else if (this.x<start.x && this.y==start.y) {return Direction.LEFT;}
+        else return null;
     }
 
     @Override
