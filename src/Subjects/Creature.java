@@ -48,10 +48,10 @@ public abstract class Creature extends Entity {
         ArrayList<Node> queue = new ArrayList<>();
         queue.add(new Node(this.getCoordinate()));
         Node currentNode = queue.remove(0);
-        while ( !(map.getNaighbors(currentNode.getCoordinate())).contains(targetCoordinate) ) {
+        while (!(map.getNaighbors(currentNode.getCoordinate())).contains(targetCoordinate)) {
             for (Coordinate naighbourCoordinate : map.getNaighbors(currentNode.getCoordinate())) {
                 Node operatedNode = new Node(naighbourCoordinate);
-                if(!wasChecked.contains(operatedNode)&&map.isFieldEmpty(operatedNode.getCoordinate())) {
+                if (!wasChecked.contains(operatedNode) && map.isFieldEmpty(operatedNode.getCoordinate())) {
                     //дбавляем координаты родительского узла в текущий узел
                     operatedNode.setParantNode(currentNode);
                     //вычисляем и добавляем цену пути до текущего узла, эвристическую стоимсть, и общую стоимость пути.
@@ -61,17 +61,22 @@ public abstract class Creature extends Entity {
                     //добавляем узел в очередь на обработку
                     queue.add(operatedNode);
                 }
-                }
+            }
             //сортируем очередь по наименьшей цене пути
             Collections.sort(queue, Comparator.comparingInt(Node::getCostMoveTotal));
             //добавляем обработанный узел в лист проверенных
             wasChecked.add(currentNode);
             //Берем элеметнт с наименьшей ценой движения(первый в отсортированом списке.
-            currentNode = queue.remove(0);
+            if (queue.isEmpty()) {
+                System.out.println("Путь не найден");
+                return null;
+            } else {
+                currentNode = queue.remove(0);
+            }
         }
-        while(!currentNode.getCoordinate().equals(this.getCoordinate())){
+        while (!currentNode.getCoordinate().equals(this.getCoordinate())) {
             path.add(0, currentNode);
-            currentNode=currentNode.getParantNode();
+            currentNode = currentNode.getParantNode();
         }
         return path;
     }
