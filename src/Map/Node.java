@@ -2,6 +2,8 @@
 package Map;
 
 
+import java.util.ArrayList;
+
 public class Node {
     //Для добавления возможнсти упрощеннй обработки дробных значени цена движения на 1 клетку 10 а не 1.
     private Coordinate nodeCoordinate;
@@ -10,8 +12,10 @@ public class Node {
     int costMoveHeuristic;
     int costMove;
 
+    public Node() {
+    }
 
-    public Node(Coordinate coordinate){
+    public Node(Coordinate coordinate) {
         nodeCoordinate = coordinate;
     }
 
@@ -51,9 +55,19 @@ public class Node {
         this.costMove = costMove;
     }
 
+    public Node getDuplicateFrom(ArrayList<Node> queue) {
+        for (Node currentNode : queue) {
+            if (currentNode.getCoordinate().equals(this.getCoordinate())) {
+                return currentNode;
+            }
+        }
+        return null;
+    }
+
     @Override
     public String toString() {
-        String str =this.getCoordinate()+"|"+this.getCostMoveTotal();
+        String str = this.getCoordinate() + "|" + this.getCostMoveTotal() + "|"
+                + this.getCostMoveHeuristic() + "|" + this.getCostMove();
         return str;
     }
 }

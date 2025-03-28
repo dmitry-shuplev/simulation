@@ -14,13 +14,13 @@ public class Simulation {
     public static void main(String[] args) throws InterruptedException {
         Map map = new Map();
         View.createViewMap(map);
-        Herbvore herb1 = new Herbvore(new Coordinate(2, 2));
-        Predator pr1 = new Predator(new Coordinate(20,5));
+        Herbvore herb1 = new Herbvore(new Coordinate(20, 5));
+        Predator pr1 = new Predator(new Coordinate(1,1));
         map.getMap().put(herb1.getCoordinate(), herb1);
         map.getMap().put(pr1.getCoordinate(), pr1);
 
         ArrayList<Node> path = new ArrayList<>();
-            path = pr1.finedPath(map, herb1.getCoordinate());
+            path = pr1.finedPath2(map, herb1);
         System.out.println(path.toString());
 
         View.updateMap(map);
