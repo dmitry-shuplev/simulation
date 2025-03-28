@@ -48,9 +48,11 @@ public abstract class Creature extends Entity {
         ArrayList<Node> queue = new ArrayList<>();
         queue.add(new Node(this.getCoordinate()));
         Node currentNode = queue.remove(0);
+        int total_staps = 0;
         while (!(map.getNaighbors(currentNode.getCoordinate())).contains(targetCoordinate)) {
             for (Coordinate naighbourCoordinate : map.getNaighbors(currentNode.getCoordinate())) {
                 Node operatedNode = new Node(naighbourCoordinate);
+
                 if (!wasChecked.contains(operatedNode) && map.isFieldEmpty(operatedNode.getCoordinate())) {
                     //дбавляем координаты родительского узла в текущий узел
                     operatedNode.setParantNode(currentNode);
@@ -61,6 +63,7 @@ public abstract class Creature extends Entity {
                     //добавляем узел в очередь на обработку
                     queue.add(operatedNode);
                 }
+                System.out.println(total_staps++ + ":"+operatedNode.toString());
             }
             //сортируем очередь по наименьшей цене пути
             Collections.sort(queue, Comparator.comparingInt(Node::getCostMoveTotal));

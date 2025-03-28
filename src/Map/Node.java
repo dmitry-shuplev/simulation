@@ -53,6 +53,7 @@ public class Node {
 
     @Override
     public String toString() {
-        return nodeCoordinate.toString();
+        String str =this.getCoordinate()+"|"+this.getCostMoveTotal();
+        return str;
     }
 }
