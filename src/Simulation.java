@@ -1,27 +1,39 @@
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
-import Map.Map;
-import Map.Coordinate;
+import Map.*;
 import Subjects.*;
 import Config.Settings.*;
 
 import static Config.Settings.*;
+import static java.lang.Thread.sleep;
 
 public class Simulation {
+
     public static void main(String[] args) throws InterruptedException {
         Map map = new Map();
-            map.filingMap();
-        Herbvore herb = new Herbvore(new Coordinate(1,1));
-        for (int i = STEPS; i > 0; i--) {
-            herb.move(Direction.UP, map);
-            herb.move(Direction.RIGHT, map);
-            Thread.sleep(1000);
-            View.showMap(map);
-            View.showEntitys(map);
+        View.createViewMap(map);
+        Herbvore herb1 = new Herbvore(new Coordinate(2, 2));
+        Predator pr1 = new Predator(new Coordinate(20,5));
+        map.getMap().put(herb1.getCoordinate(), herb1);
+        map.getMap().put(pr1.getCoordinate(), pr1);
+
+        ArrayList<Node> path = new ArrayList<>();
+            path = pr1.finedPath(map, herb1.getCoordinate());
+        System.out.println(path.toString());
+
+        View.updateMap(map);
+
+       // System.out.println(pr1.finedObject(map, 'H').toString());
+
+
+        for (int i = 0; i < STEPS; i++) {
+//Здесь основной цикл программы
+
         }
+        System.out.println("Закончено");
 
 
     }
-
-
 }
