@@ -90,20 +90,31 @@ public abstract class Creature extends Entity {
     public ArrayList<Node> finedPath2(Map map, Creature targetCreature) {
         ArrayList<Node> path = new ArrayList<>();
         ArrayList<Node> queue = new ArrayList<>();
-        ArrayList<Node> wacCheked = new ArrayList<>();
+        ArrayList<Node> wasCheked = new ArrayList<>();
         Node rootNode = new Node(this.getCoordinate());
         queue.add(rootNode); //добавлен первый узел в очередь;
         // Основной цикл будет действовать пока очередь не пуста
         Node processedNode = new Node();
-        int total_stap =0; //log
+        int total_stap = 0; //log
+        baseLoop:
         while (!queue.isEmpty()) {
             processedNode = queue.remove(0);//взяли из очереди и удалили первый элемент
             //создаем по координатам и добавляем в очередь все  _доступные_ соседние узлы
+            //log
+            System.out.println(total_stap++ + " Проверяемый узел | " + processedNode.toString());
+            //log end
+
             for (Coordinate nodeCoordinate : map.getNaighbors(processedNode.getCoordinate())) {
+            if(nodeCoordinate.equals(targetCreature.getCoordinate())){break baseLoop;}
                 //если поле с координатами свободно то создаем и добавляем очередь в узел
                 if (map.isFieldEmpty(nodeCoordinate)) {
                     Node newNode = new Node(nodeCoordinate);
-                    if(wacCheked.contains(newNode)){continue;}//проверка был ли уже обработан этот узел
+                    if (wasCheked.contains(newNode)) {
+                        //log
+                        System.out.println(" добавляемый узел уже был проверен | " + newNode.toString());
+                        //log end
+                        continue;
+                    }//проверка был ли уже обработан этот узел
                     newNode.setParantNode(processedNode);//добавляем узел родитель
                     newNode.setCostMove(processedNode.getCostMove() + Settings.MOVE_PRICE);
                     newNode.setCostMoveHeuristic(Coordinate.getHeuristicCoast(nodeCoordinate, targetCreature.getCoordinate()));
@@ -112,29 +123,55 @@ public abstract class Creature extends Entity {
                     Node duplicateNode = newNode.getDuplicateFrom(queue);
                     if (duplicateNode == null) {
                         queue.add(newNode);
+                        //log
+                        System.out.println("добавлен в чередь | " + newNode);
+                        //log end
                     } else if (duplicateNode.getCostMoveTotal() > newNode.getCostMoveTotal()) {
                         queue.remove(duplicateNode);
+                        //log
+                        System.out.println("пересчитан узел | " + duplicateNode);
+                        //log end
                         queue.add(newNode);
+                        //log
+                        System.out.println("на | " + newNode.toString());
+                        //log end
                     }
                 }
             }
             //сортируем массив очереди по общей цене пути и выбираем нулевой(с наименьшей ценой пути) для следующей итерации
-            wacCheked.add(processedNode);
-            Collections.sort(queue, Comparator.comparing(Node::getCostMoveTotal));
-            processedNode = queue.remove(0);
+            wasCheked.add(processedNode);//Добавляем узел в массив отработанных
+            Collections.sort(queue, Comparator.comparing(Node::getCostMoveTotal).thenComparingInt(Node::getCostMoveHeuristic));
             //log
+            // Вывод отсортированного списка
+            System.out.println("Отсортированный список:");
+            for (Node node : queue) {
+                System.out.println(node.toString()); // Выводим каждый узел
+            }
+            //log end
+
+            //log
+            /*
             try {
                 // Ожидание 1 секунду (1000 миллисекунд)
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
                 // Обработка исключения, если поток был прерван
                 System.out.println("Поток прерван: " + e.getMessage());
-            }            System.out.println(total_stap++ + processedNode.toString());
+            }*/
+
 
         }//конец основного цикла
+        //log
+        System.out.println("Конец цикла");
+        System.out.println(processedNode.toString());
+        System.out.println(processedNode.getParantNode().toString());
+        //log end
 //преобразование массива узлов в массив координат
-        while (!processedNode.getParantNode().getCoordinate().equals(rootNode.getParantNode().getCoordinate())) {
-            path.add(processedNode);
+        while (!processedNode.equals(rootNode)) {
+           //log
+            System.out.println("получение пути");
+            //log end
+            path.add(0, processedNode);
             processedNode = processedNode.getParantNode();
         }
         return path;

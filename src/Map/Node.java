@@ -3,6 +3,7 @@ package Map;
 
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Node {
     //Для добавления возможнсти упрощеннй обработки дробных значени цена движения на 1 клетку 10 а не 1.
@@ -62,6 +63,19 @@ public class Node {
             }
         }
         return null;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true; // Сравнение ссылок
+        if (obj == null || !(obj instanceof Node)) return false; // Проверка типа
+        Node other = (Node) obj;
+        return this.nodeCoordinate.equals(other.nodeCoordinate); // Сравнение по координатам
+    }
+
+    @Override
+    public int hashCode() {
+        return nodeCoordinate.hashCode(); // Используем хэш-код координат
     }
 
     @Override

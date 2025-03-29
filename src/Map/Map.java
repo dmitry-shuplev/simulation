@@ -16,7 +16,7 @@ public class Map {
     private HashMap<Coordinate, Entity> map = new HashMap<>();
 
     public Map() {
-        //*filingMap()*/;
+        filingMap();
         MapTamplate1.fillingMap(this);
     }
 
