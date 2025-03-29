@@ -14,6 +14,7 @@ public class Map {
     private final int xMax = MAP_WIDTH;
     private final int yMax = MAP_HEIGHT;
     private HashMap<Coordinate, Entity> map = new HashMap<>();
+    private ArrayList<Coordinate> path = new ArrayList<>();
 
     public Map() {
         filingMap();
@@ -31,7 +32,7 @@ public class Map {
         return true;
     }
 
-    public void addEntyty(Coordinate cordinate, Entity entity){
+    public void addEntyty(Coordinate cordinate, Entity entity) {
         map.put(cordinate, entity);
     }
 
@@ -76,4 +77,11 @@ public class Map {
         }
     }
 
+    public ArrayList<Coordinate> getPath() {
+        return path;
+    }
+
+    public void setPath(ArrayList<Coordinate> path) {
+        this.path = path;
+    }
 }

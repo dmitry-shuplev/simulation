@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
+import Config.Settings;
 import Map.*;
 import Subjects.*;
 import Config.Settings.*;
@@ -14,30 +15,32 @@ public class Simulation {
     public static void main(String[] args) throws InterruptedException {
         Map map = new Map();
         View.createViewMap(map);
-        Herbvore herb1 = new Herbvore(new Coordinate(22, 3));
-        Predator pr1 = new Predator(new Coordinate(5,5));
+        Herbvore herb1 = new Herbvore(Coordinate.getRandCoordinate(map));
+        Predator pr1 = new Predator(Coordinate.getRandCoordinate(map));
         map.getMap().put(herb1.getCoordinate(), herb1);
         map.getMap().put(pr1.getCoordinate(), pr1);
 
-
         ArrayList<Node> path = new ArrayList<>();
-            path = pr1.finedPath2(map, herb1);
-            for(Node node:path){
-                System.out.println(node);
-            }
 
-
-        View.updateMap(map);
-
-       // System.out.println(pr1.finedObject(map, 'H').toString());
-
+        Random rand = new Random();
 
         for (int i = 0; i < STEPS; i++) {
+            map.getPath().clear();
+            pr1.move(Direction.values()[rand.nextInt(4)], map);
+            herb1.move(Direction.RIGHT, map);
+            herb1.move(Direction.values()[rand.nextInt(4)], map);
+            path = pr1.finedPath2(map, herb1);
+
+            for (Node node : path) {
+                map.getPath().add(node.getCoordinate());
+            }
+            View.updateMap(map);
+            sleep(1000);
 //Здесь основной цикл программы
-
         }
+
+
         System.out.println("Закончено");
-
-
+        //  System.exit(0);
     }
 }

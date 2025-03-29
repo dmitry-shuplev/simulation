@@ -5,6 +5,8 @@ import Config.Settings;
 import Map.*;
 
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.Random;
 
 public class MapComponents extends JComponent {
     private Map currentMap;
@@ -15,10 +17,14 @@ public class MapComponents extends JComponent {
     private Image rockImage;
 
 
-
     public MapComponents(Map map) {
         this.currentMap = map;
     }
+
+    public MapComponents(Map map, ArrayList<Coordinate> path) {
+        this.currentMap = map;
+    }
+
 
     @Override
     public void paint(Graphics g) {
@@ -36,54 +42,60 @@ public class MapComponents extends JComponent {
 
         for (int y = 0; y < Settings.MAP_HEIGHT; y++) {
             for (int x = 0; x < Settings.MAP_WIDTH; x++) {
+
+                g.setColor(Color.LIGHT_GRAY);
+                g.fillRect(x * cellSize, y * cellSize, (int) (cellSize / 1.2), (int) (cellSize / 1.2));
+
+
                 switch (getEntitySymbol(x, y)) {
                     case 'P':
                         g.setColor(Color.RED);
                         g.fillRect(x * cellSize, y * cellSize, (int) (cellSize / 1.2), (int) (cellSize / 1.2));
-                        g.drawImage(predatorImage, x * cellSize, y * cellSize, (int) (cellSize / 1.2), (int) (cellSize / 1.2),this);
+                        g.drawImage(predatorImage, x * cellSize, y * cellSize, (int) (cellSize / 1.2), (int) (cellSize / 1.2), this);
                         break;
                     case 'H':
                         g.setColor(Color.PINK);
                         g.fillRect(x * cellSize, y * cellSize, (int) (cellSize / 1.2), (int) (cellSize / 1.2));
-                        g.drawImage(herbvoreImage, x * cellSize, y * cellSize, (int) (cellSize / 1.5), (int) (cellSize / 1.5),this);
+                        g.drawImage(herbvoreImage, x * cellSize, y * cellSize, (int) (cellSize / 1.5), (int) (cellSize / 1.5), this);
                         break;
                     case 'G':
                         g.setColor(new Color(144, 238, 144));
                         g.fillRect(x * cellSize, y * cellSize, (int) (cellSize / 1.2), (int) (cellSize / 1.2));
-                        g.drawImage(grassImage, x * cellSize, y * cellSize, (int) (cellSize / 1.2), (int) (cellSize / 1.2),this);
-
+                        g.drawImage(grassImage, x * cellSize, y * cellSize, (int) (cellSize / 1.2), (int) (cellSize / 1.2), this);
                         break;
                     case 'T':
                         g.setColor(Color.GREEN);
                         g.fillRect(x * cellSize, y * cellSize, (int) (cellSize / 1.2), (int) (cellSize / 1.2));
-                        g.drawImage(treeImage, x * cellSize, y * cellSize, (int) (cellSize / 1.2), (int) (cellSize / 1.2),this);
+                        g.drawImage(treeImage, x * cellSize, y * cellSize, (int) (cellSize / 1.2), (int) (cellSize / 1.2), this);
                         break;
                     case 'R':
                         g.setColor(new Color(139, 69, 19));
                         g.fillRect(x * cellSize, y * cellSize, (int) (cellSize / 1.2), (int) (cellSize / 1.2));
-                        g.drawImage(rockImage, x * cellSize, y * cellSize, (int) (cellSize / 1.2), (int) (cellSize / 1.2),this);
+                        g.drawImage(rockImage, x * cellSize, y * cellSize, (int) (cellSize / 1.2), (int) (cellSize / 1.2), this);
                         break;
-
-                    case 't':
-                        g.setColor(Color.GRAY);
+                    case 'p':
+                        g.setColor(Color.DARK_GRAY);
                         g.fillRect(x * cellSize, y * cellSize, (int) (cellSize / 1.2), (int) (cellSize / 1.2));
                         break;
                     default:
-                        g.setColor(Color.LIGHT_GRAY);
-                        g.fillRect(x * cellSize, y * cellSize, (int) (cellSize / 1.2), (int) (cellSize / 1.2));
+                        break;
                 }
 
             }
         }
-        repaint();
     }
 
     private char getEntitySymbol(int x, int y) {
         Coordinate coordinate = new Coordinate(x, y);
+
+        if (currentMap.getPath().contains(coordinate)) {
+            return 'p';
+        }
         if (currentMap.getMap().get(coordinate) != null) {
             return currentMap.getMap().get(coordinate).getView();
         }
         return 'E';
     }
+
 
 }

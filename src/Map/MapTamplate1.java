@@ -11,7 +11,7 @@ public class MapTamplate1 {
 
 
         for (int i = 0; i < MAP_HEIGHT-2; i++) {
-            Rock rock = new Rock(new Coordinate(19,i));
+            Rock rock = new Rock(new Coordinate(13,i));
             map.getMap().put(rock.getCoordinate(), rock);
         }
     }

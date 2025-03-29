@@ -78,9 +78,9 @@ public class Coordinate {
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
-        if (obj == null || !(obj instanceof Coordinate)) return false;
-        Coordinate coordinate = (Coordinate) obj;
-        return x == coordinate.x && y == coordinate.y;
+        if (!(obj instanceof Coordinate)) return false;
+        Coordinate other = (Coordinate) obj;
+        return this.x == other.x && this.y == other.y;
     }
 
     @Override

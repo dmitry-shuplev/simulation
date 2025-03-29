@@ -4,6 +4,7 @@ import Subjects.Entity;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class View {
 private static JFrame frame = new JFrame();
@@ -23,6 +24,7 @@ private static JFrame frame = new JFrame();
     public static void updateMap(Map map){
         MapComponents field = new MapComponents(map);
         frame.getContentPane().add(field, BorderLayout.CENTER);
+        frame.repaint();
     }
 
 }

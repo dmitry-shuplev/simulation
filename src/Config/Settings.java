@@ -15,9 +15,9 @@ public class Settings {
     }
 
     public enum Subjects {
-        ROCKS(10, "Rock"),
+        ROCKS(50, "Rock"),
         GRASS(1, "Grass"),
-        TREES(50,"Tree"),
+        TREES(20,"Tree"),
         HERBVORE(0, "Herbvore"),
         PREDSTOR(0, "Predator");
 
