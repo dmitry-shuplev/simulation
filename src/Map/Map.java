@@ -81,6 +81,10 @@ public class Map {
         return path;
     }
 
+    public Entity getEntityByCoordinate(Coordinate coordinate){
+    return map.get(coordinate);
+    }
+
     public void setPath(ArrayList<Coordinate> path) {
         this.path = path;
     }

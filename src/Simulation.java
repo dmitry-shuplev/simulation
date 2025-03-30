@@ -20,19 +20,19 @@ public class Simulation {
         map.getMap().put(herb1.getCoordinate(), herb1);
         map.getMap().put(pr1.getCoordinate(), pr1);
 
-        ArrayList<Node> path = new ArrayList<>();
+        ArrayList<Coordinate> path = new ArrayList<>();
 
         Random rand = new Random();
 
         for (int i = 0; i < STEPS; i++) {
             map.getPath().clear();
-            pr1.move(Direction.values()[rand.nextInt(4)], map);
-            herb1.move(Direction.RIGHT, map);
+            pr1.motheToPerpous(map);
+            herb1.motheToPerpous(map);
             herb1.move(Direction.values()[rand.nextInt(4)], map);
-            path = pr1.findPath(map, herb1);
+            path = pr1.findPath(map, herb1.getCoordinate());
 
-            for (Node node : path) {
-                map.getPath().add(node.getCoordinate());
+            for (Coordinate coordinate: path) {
+                map.getPath().add(coordinate);
             }
             View.updateMap(map);
             sleep(1000);

@@ -62,8 +62,8 @@ public class Coordinate {
     public Direction getDirection(Coordinate start) {
         if(this.x == start.x && this.y<start.y){return Direction.DOWN;}
         else if (this.x == start.x && this.y>start.y) {return Direction.UP;}
-        else if (this.x>start.x && this.y==start.y) {return Direction.RIGHT;}
-        else if (this.x<start.x && this.y==start.y) {return Direction.LEFT;}
+        else if (this.x>start.x && this.y==start.y) {return Direction.LEFT;}
+        else if (this.x<start.x && this.y==start.y) {return Direction.RIGHT;}
         else return null;
     }
 
