@@ -29,7 +29,7 @@ public class Simulation {
             pr1.move(Direction.values()[rand.nextInt(4)], map);
             herb1.move(Direction.RIGHT, map);
             herb1.move(Direction.values()[rand.nextInt(4)], map);
-            path = pr1.finedPath2(map, herb1);
+            path = pr1.findPath(map, herb1);
 
             for (Node node : path) {
                 map.getPath().add(node.getCoordinate());
