@@ -5,6 +5,7 @@ import Map.*;
 
 
 public abstract class Entity {
+    private int life = 100;
 
     public abstract char getView();
 
@@ -19,6 +20,12 @@ public abstract class Entity {
         this.coordinate = coordinate;
     }
 
+    public int getLife() {
+        return life;
+    }
 
+    public void setLife(int life) {
+        this.life = life;
+    }
 }
 

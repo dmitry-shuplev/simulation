@@ -20,11 +20,11 @@ public class Settings {
     }
 
     public enum Subjects {
-        ROCKS(20, "Rock"),
-        GRASS(3, "Grass"),
-        TREES(20, "Tree"),
-        HERBVORE(0, "Herbvore"),
-        PREDSTOR(0, "Predator");
+        ROCKS(30, "Rock"),
+        GRASS(21, "Grass"),
+        TREES(30, "Tree"),
+        HERBVORE(3, "Herbvore"),
+        PREDSTOR(1, "Predator");
 
         private final int totalObjects;
         private final String entityName;

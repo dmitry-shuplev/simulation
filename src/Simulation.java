@@ -15,24 +15,33 @@ public class Simulation {
     public static void main(String[] args) throws InterruptedException {
         Map map = new Map();
         View.createViewMap(map);
-        Herbvore herb1 = new Herbvore(Coordinate.getRandCoordinate(map));
-        Predator pr1 = new Predator(Coordinate.getRandCoordinate(map));
-        map.getMap().put(herb1.getCoordinate(), herb1);
-        map.getMap().put(pr1.getCoordinate(), pr1);
 
         ArrayList<Coordinate> path = new ArrayList<>();
 
-        Random rand = new Random();
-
         for (int i = 0; i < STEPS; i++) {
             map.getPath().clear();
-            pr1.moveToPrey(map);
-            herb1.moveToPrey(map);
-            path = pr1.findPath(map, herb1.getCoordinate());
 
-            for (Coordinate coordinate: path) {
+           /*path = pr1.findPath(map, preyCoordinate);
+            for (Coordinate coordinate : path) {
                 map.getPath().add(coordinate);
             }
+
+            */
+            boolean movedToPrey;
+            int counte = 0;
+            for (var entity : map.getMapCopy().values()) {
+
+                if (entity.getClass().equals(Herbvore.class) || (entity.getClass().equals(Predator.class))) {
+                    ((Creature) entity).moveToPrey(map);
+                    ((Creature) entity).eat(map);
+                }
+
+            }
+
+            Grass g =new Grass(Coordinate.getRandCoordinate(map));
+            map.addEntity(g.getCoordinate(), g);
+
+            map.clearMap();
             View.updateMap(map);
             sleep(1000);
 //Здесь основной цикл программы

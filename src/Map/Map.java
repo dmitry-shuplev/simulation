@@ -32,17 +32,17 @@ public class Map {
         return true;
     }
 
-    public void addEntyty(Coordinate cordinate, Entity entity) {
-        map.put(cordinate, entity);
+    public void addEntity(Coordinate cordinate, Entity entity) {
+        if(this.isFieldEmpty(cordinate))
+        {
+        map.put(cordinate, entity);}
     }
 
-    public Coordinate[] getNeighuds(Coordinate rootCoordinate) {
-        Coordinate[] naighuds = new Coordinate[4];
-
-        return naighuds;
+    public void removeEntity(Coordinate coordinate) {
+        this.getMap().remove(coordinate);
     }
 
-    public HashMap<Coordinate, Entity> gemMapCopy() {
+    public HashMap<Coordinate, Entity> getMapCopy() {
         return new HashMap<>(map);
     }
 
@@ -77,15 +77,27 @@ public class Map {
         }
     }
 
-    public ArrayList<Coordinate> getPath() {
-        return path;
+    public void clearMap() {
+        for (Entity entity : this.getMapCopy().values()) {
+            if (entity.getLife() <= 0) {
+                map.remove(entity.getCoordinate());
+            }
+        }
     }
 
-    public Entity getEntityByCoordinate(Coordinate coordinate){
-    return map.get(coordinate);
+    public ArrayList<Coordinate> getPath() {
+        return path;
     }
 
     public void setPath(ArrayList<Coordinate> path) {
         this.path = path;
     }
+
+    public Entity getEntityByCoordinate(Coordinate coordinate) {
+        return map.get(coordinate);
+    }
+
+
+
+
 }

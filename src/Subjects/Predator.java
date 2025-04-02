@@ -13,11 +13,10 @@ public class Predator extends Creature {
 
     private final char representSymbol = 'P';
     private char preySymbol = 'H';
-    private int satiaty = PREDATOR_SATIATY;
-    private int life = PREDATOR_LIFE;
 
     public Predator(Coordinate coordinate) {
         setCoordinate(coordinate);
+        this.setLife(PREDATOR_LIFE);
     }
 
     public char getView() {

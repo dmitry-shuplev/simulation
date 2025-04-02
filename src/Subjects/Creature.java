@@ -23,10 +23,10 @@ public abstract class Creature extends Entity {
         Coordinate coordinate = getCoordinate();
         Coordinate newCoordinate = coordinate.getNextStepCoordinate(direction);
         if (map.isFieldEmpty(newCoordinate)) {
-            map.getMap().remove(coordinate);
+            map.removeEntity(coordinate);
             coordinate = newCoordinate;
-            this.setCoordinate(coordinate);
-            map.getMap().put(coordinate, this);
+            this.setCoordinate(newCoordinate);
+            map.getMap().put(this.getCoordinate(), this);
         }
     }
 
@@ -98,19 +98,34 @@ public abstract class Creature extends Entity {
         return path;
     }
 
-    public void moveToPrey(Map map) {
+    public boolean moveToPrey(Map map) {
         Coordinate preyCoordinate = findPreyCoordinate(map, getPreySymbol());
         ArrayList<Coordinate> path = findPath(map, preyCoordinate);
+        if (path.isEmpty()) {
+            return true;
+        }
         Coordinate nextStepCoordinate = path.getFirst();
         Settings.Direction nextStep = this.getCoordinate().getDirection(nextStepCoordinate);
         this.move(nextStep, map);
+        return false;
     }
 
-    private void eat(Map map, Coordinate preyCoordinate){
-        Entity prey = map.getEntityByCoordinate(preyCoordinate);
+    public void eat(Map map) {
+        for (Coordinate neighborCoordinate : map.getNaighbors(this.getCoordinate())) {
+            Entity entity = map.getEntityByCoordinate(neighborCoordinate);
+
+            if (entity != null) {
+                if (entity.getView() == this.getPreySymbol()) {
+                    entity.setLife(entity.getLife() - 1);
+                }
+            }
+        }
 
     }
 
+    public void increaseLife() {
+        this.life--;
+    }
 
     public char getPreySymbol() {
         return preySymbol;
