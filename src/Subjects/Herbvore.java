@@ -10,6 +10,8 @@ public class Herbvore extends Creature {
 
     private final char representSymbol = 'H';
 
+    private final char preySymbol = 'G';
+
     public Herbvore(Coordinate coordinate) {
         setCoordinate(coordinate);
     }
@@ -18,13 +20,8 @@ public class Herbvore extends Creature {
         return representSymbol;
     }
 
-    public void motheToPerpous(Map map) {
-        Coordinate purpouseCoordinate = findPurpouseCoordinate(map, 'G');
-        ArrayList<Coordinate> path = findPath(map, purpouseCoordinate);
-
-        Coordinate nextStepCoordinate = path.getFirst();
-
-        Settings.Direction nextStep = this.getCoordinate().getDirection(nextStepCoordinate);
-        this.move(nextStep, map);
+    @Override
+    public char getPreySymbol() {
+        return preySymbol;
     }
 }

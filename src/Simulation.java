@@ -26,9 +26,8 @@ public class Simulation {
 
         for (int i = 0; i < STEPS; i++) {
             map.getPath().clear();
-            pr1.motheToPerpous(map);
-            herb1.motheToPerpous(map);
-            herb1.move(Direction.values()[rand.nextInt(4)], map);
+            pr1.moveToPrey(map);
+            herb1.moveToPrey(map);
             path = pr1.findPath(map, herb1.getCoordinate());
 
             for (Coordinate coordinate: path) {

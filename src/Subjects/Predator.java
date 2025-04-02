@@ -10,6 +10,8 @@ import java.util.ArrayList;
 public class Predator extends Creature {
 
     private final char representSymbol = 'P';
+    private char preySymbol = 'H';
+
 
     public Predator(Coordinate coordinate) {
         setCoordinate(coordinate);
@@ -19,15 +21,8 @@ public class Predator extends Creature {
         return representSymbol;
     }
 
-    public void motheToPerpous(Map map) {
-        Coordinate purpouseCoordinate = findPurpouseCoordinate(map, 'H');
-        ArrayList<Coordinate> path = findPath(map, purpouseCoordinate);
-
-        Coordinate nextStepCoordinate = path.getFirst();
-
-        Settings.Direction nextStep = this.getCoordinate().getDirection(nextStepCoordinate);
-        this.move(nextStep, map);
+    @Override
+    public char getPreySymbol() {
+        return preySymbol;
     }
-
-
 }

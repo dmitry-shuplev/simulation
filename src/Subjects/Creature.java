@@ -12,7 +12,10 @@ import java.util.Comparator;
 
 import static Config.Settings.SEARCH_AREA;
 
+
 public abstract class Creature extends Entity {
+
+    private char preySymbol = 'C';
 
     public void move(Direction direction, Map map) {
         Coordinate coordinate = getCoordinate();
@@ -26,7 +29,7 @@ public abstract class Creature extends Entity {
     }
 
 
-    public Coordinate findPurpouseCoordinate(Map map, char entityType) {
+    public Coordinate findPreyCoordinate(Map map, char entityType) {
         ArrayList<Coordinate> wasChecked = new ArrayList<>();
         ArrayList<Coordinate> queue = new ArrayList<>();
         queue.add(this.getCoordinate());
@@ -93,4 +96,15 @@ public abstract class Creature extends Entity {
         return path;
     }
 
+    public void moveToPrey(Map map) {
+        Coordinate preyCoordinate = findPreyCoordinate(map, getPreySymbol());
+        ArrayList<Coordinate> path = findPath(map, preyCoordinate);
+        Coordinate nextStepCoordinate = path.getFirst();
+        Settings.Direction nextStep = this.getCoordinate().getDirection(nextStepCoordinate);
+        this.move(nextStep, map);
+    }
+
+    public char getPreySymbol() {
+        return preySymbol;
+    }
 }
