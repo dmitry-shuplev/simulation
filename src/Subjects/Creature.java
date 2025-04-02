@@ -10,12 +10,14 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 
-import static Config.Settings.SEARCH_AREA;
+import static Config.Settings.*;
 
 
 public abstract class Creature extends Entity {
 
-    private char preySymbol = 'C';
+    private char preySymbol;
+    private int satiaty;
+    private int life;
 
     public void move(Direction direction, Map map) {
         Coordinate coordinate = getCoordinate();
@@ -103,6 +105,12 @@ public abstract class Creature extends Entity {
         Settings.Direction nextStep = this.getCoordinate().getDirection(nextStepCoordinate);
         this.move(nextStep, map);
     }
+
+    private void eat(Map map, Coordinate preyCoordinate){
+        Entity prey = map.getEntityByCoordinate(preyCoordinate);
+
+    }
+
 
     public char getPreySymbol() {
         return preySymbol;

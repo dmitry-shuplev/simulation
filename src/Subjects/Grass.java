@@ -1,16 +1,19 @@
+
 package Subjects;
 
+import Config.Settings;
 import Map.Coordinate;
+import Config.Settings.*;
+
+import static Config.Settings.*;
 
 public class Grass extends Entity {
-    private final int START_QUANTITY = 100;
     private final char representSymbol = 'G';
-    private int quantity;
-private Coordinate coordinate;
-    
+    private int life;
+
     public Grass(Coordinate coordinate){
         setCoordinate(coordinate);
-        this.quantity = START_QUANTITY;
+        this.life = GRASS_QUANTITY;
     }
 
     public char getView() {
@@ -18,8 +21,9 @@ private Coordinate coordinate;
     }
 
     public void IncreaceQuantity(){
-        quantity-=1;
+       // quantity-=1;
     }
 
 
 }
+
