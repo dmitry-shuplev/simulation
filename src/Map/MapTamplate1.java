@@ -1,9 +1,6 @@
 package Map;
 
-import Config.Settings;
-
 import Subjects.*;
-
 import static Config.Settings.MAP_HEIGHT;
 
 public class MapTamplate1 {

@@ -1,9 +1,6 @@
 package Subjects;
 
-import Config.Settings;
 import Map.Coordinate;
-import Map.Map;
-
 import static Config.Settings.*;
 
 public class Herbvore extends Creature {

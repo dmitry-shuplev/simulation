@@ -1,12 +1,8 @@
 package Subjects;
 
 import Config.Settings;
-import Config.Settings.*;
 import Map.*;
-
-import java.text.CollationElementIterator;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 
@@ -24,7 +20,6 @@ public abstract class Creature extends Entity {
         Coordinate newCoordinate = coordinate.getNextStepCoordinate(direction);
         if (map.isFieldEmpty(newCoordinate)) {
             map.removeEntity(coordinate);
-            coordinate = newCoordinate;
             this.setCoordinate(newCoordinate);
             map.getMap().put(this.getCoordinate(), this);
         }

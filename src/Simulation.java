@@ -24,7 +24,6 @@ public class Simulation {
             for (Coordinate coordinate : path) {
                 map.getPath().add(coordinate);
             }
-
           */
             for (var entity : map.getMapCopy().values()) {
 

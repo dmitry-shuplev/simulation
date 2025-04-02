@@ -1,12 +1,6 @@
 package Subjects;
 
-import Config.Settings;
 import Map.Coordinate;
-import Map.Map;
-
-import javax.swing.plaf.DimensionUIResource;
-import java.util.ArrayList;
-
 import static Config.Settings.*;
 
 public class Predator extends Creature {

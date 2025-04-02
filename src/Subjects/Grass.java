@@ -1,10 +1,7 @@
 
 package Subjects;
 
-import Config.Settings;
 import Map.Coordinate;
-import Config.Settings.*;
-
 import static Config.Settings.*;
 
 public class Grass extends Entity {

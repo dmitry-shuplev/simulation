@@ -3,10 +3,8 @@ package Map;
 
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class Node {
-    //Для добавления возможнсти упрощеннй обработки дробных значени цена движения на 1 клетку 10 а не 1.
     private Coordinate nodeCoordinate;
     Node parantNode;
     int costMoveTotal;
@@ -80,8 +78,7 @@ public class Node {
 
     @Override
     public String toString() {
-        String str = this.getCoordinate() + "|" + this.getCostMoveTotal() + "|"
+        return this.getCoordinate() + "|" + this.getCostMoveTotal() + "|"
                 + this.getCostMoveHeuristic() + "|" + this.getCostMove();
-        return str;
     }
 }

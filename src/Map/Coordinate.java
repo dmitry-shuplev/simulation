@@ -3,8 +3,6 @@ package Map;
 import java.util.Objects;
 import java.util.Random;
 
-import Config.Settings.*;
-
 import static Config.Settings.*;
 
 public class Coordinate {
@@ -16,16 +14,13 @@ public class Coordinate {
         this.y = y;
     }
 
-    public static int getHeuristicCoast(Coordinate start, Coordinate finish){
-        return (Math.abs(finish.x-start.x)+Math.abs(finish.y-start.y) - 1)*10;
+    public static int getHeuristicCoast(Coordinate start, Coordinate finish) {
+        return (Math.abs(finish.x - start.x) + Math.abs(finish.y - start.y) - 1) * 10;
     }
 
 
     public boolean isCoordinateCorrect() {
-        if (this.x < 0 || this.y < 0 || this.x > MAP_WIDTH - 1 || this.y > MAP_HEIGHT - 1) {
-            return false;
-        }
-        return true;
+        return this.x >= 0 && this.y >= 0 && this.x < MAP_WIDTH && this.y < MAP_HEIGHT;
     }
 
     public static Coordinate getRandCoordinate(Map map) {
@@ -60,11 +55,15 @@ public class Coordinate {
     }
 
     public Direction getDirection(Coordinate start) {
-        if(this.x == start.x && this.y<start.y){return Direction.DOWN;}
-        else if (this.x == start.x && this.y>start.y) {return Direction.UP;}
-        else if (this.x>start.x && this.y==start.y) {return Direction.LEFT;}
-        else if (this.x<start.x && this.y==start.y) {return Direction.RIGHT;}
-        else return null;
+        if (this.x == start.x && this.y < start.y) {
+            return Direction.DOWN;
+        } else if (this.x == start.x && this.y > start.y) {
+            return Direction.UP;
+        } else if (this.x > start.x && this.y == start.y) {
+            return Direction.LEFT;
+        } else if (this.x < start.x && this.y == start.y) {
+            return Direction.RIGHT;
+        } else return null;
     }
 
     @Override
