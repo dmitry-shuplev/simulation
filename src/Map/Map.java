@@ -1,18 +1,13 @@
 package Map;
 
 import Subjects.*;
-import Config.Settings;
-
 import java.util.ArrayList;
 import java.util.HashMap;
-
 import static Config.Settings.*;
 
 
 public class Map {
 
-    private final int xMax = MAP_WIDTH;
-    private final int yMax = MAP_HEIGHT;
     private HashMap<Coordinate, Entity> map = new HashMap<>();
     private ArrayList<Coordinate> path = new ArrayList<>();
 
@@ -26,10 +21,7 @@ public class Map {
     }
 
     public boolean isFieldEmpty(Coordinate coordinate) {
-        if (this.getMap().containsKey(coordinate)) {
-            return false;
-        }
-        return true;
+       return !this.getMap().containsKey(coordinate);
     }
 
     public void addEntity(Coordinate cordinate, Entity entity) {

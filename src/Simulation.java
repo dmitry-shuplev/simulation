@@ -1,11 +1,8 @@
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Random;
 
-import Config.Settings;
+
 import Map.*;
 import Subjects.*;
-import Config.Settings.*;
 
 import static Config.Settings.*;
 import static java.lang.Thread.sleep;
@@ -21,14 +18,14 @@ public class Simulation {
         for (int i = 0; i < STEPS; i++) {
             map.getPath().clear();
 
-           /*path = pr1.findPath(map, preyCoordinate);
+           /*
+           Этот код может показывать проложенный путь. использовался для настройки алгоритма поиска пути.
+           path = pr1.findPath(map, preyCoordinate);
             for (Coordinate coordinate : path) {
                 map.getPath().add(coordinate);
             }
 
-            */
-            boolean movedToPrey;
-            int counte = 0;
+          */
             for (var entity : map.getMapCopy().values()) {
 
                 if (entity.getClass().equals(Herbvore.class) || (entity.getClass().equals(Predator.class))) {
