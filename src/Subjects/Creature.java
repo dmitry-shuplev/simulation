@@ -2,10 +2,8 @@ package Subjects;
 
 import Config.Settings;
 import Map.*;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-
+import Map.Map;
+import java.util.*;
 import static Config.Settings.*;
 
 
@@ -44,7 +42,7 @@ public abstract class Creature extends Entity {
         }
         return Coordinate.getRandCoordinate(map);
     }
-
+/*первый вариант поиска пути*/
     public ArrayList<Coordinate> findPath(Map map, Coordinate targetCreatureCoordinate) {
         ArrayList<Coordinate> path = new ArrayList<>();
         ArrayList<Node> queue = new ArrayList<>();
@@ -92,6 +90,12 @@ public abstract class Creature extends Entity {
         }
         return path;
     }
+
+
+ //второй вариант поиска пути
+
+    //конец второга варианта
+
 
     public boolean moveToPrey(Map map) {
         Coordinate preyCoordinate = findPreyCoordinate(map, getPreySymbol());
