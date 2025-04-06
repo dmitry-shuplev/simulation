@@ -1,9 +1,13 @@
 package Subjects;
 
+import Config.Settings;
 import Map.Coordinate;
+import Map.Map;
+import interfaces.Movable;
+
 import static Config.Settings.*;
 
-public class Herbvore extends Creature {
+public class Herbvore extends Creature implements Movable {
 
     private final char representSymbol = 'H';
     private final char preySymbol = 'G';
@@ -22,4 +26,6 @@ public class Herbvore extends Creature {
     public char getPreySymbol() {
         return preySymbol;
     }
+
+
 }

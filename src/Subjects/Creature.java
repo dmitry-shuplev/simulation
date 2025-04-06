@@ -13,16 +13,6 @@ public abstract class Creature extends Entity {
     private int satiaty;
     private int life;
 
-    public void move(Direction direction, Map map) {
-        Coordinate coordinate = getCoordinate();
-        Coordinate newCoordinate = coordinate.getNextStepCoordinate(direction);
-        if (map.isFieldEmpty(newCoordinate)) {
-            map.removeEntity(coordinate);
-            this.setCoordinate(newCoordinate);
-            map.getMap().put(this.getCoordinate(), this);
-        }
-    }
-
 
     public Coordinate findPreyCoordinate(Map map, char entityType) {
         ArrayList<Coordinate> wasChecked = new ArrayList<>();
@@ -90,23 +80,6 @@ public abstract class Creature extends Entity {
         return path;
     }
 
-
- //второй вариант поиска пути
-
-    //конец второга варианта
-
-
-    public boolean moveToPrey(Map map) {
-        Coordinate preyCoordinate = findPreyCoordinate(map, getPreySymbol());
-        ArrayList<Coordinate> path = findPath(map, preyCoordinate);
-        if (path.isEmpty()) {
-            return true;
-        }
-        Coordinate nextStepCoordinate = path.getFirst();
-        Settings.Direction nextStep = this.getCoordinate().getDirection(nextStepCoordinate);
-        this.move(nextStep, map);
-        return false;
-    }
 
     public void eat(Map map) {
         for (Coordinate neighborCoordinate : map.getNaighbors(this.getCoordinate())) {

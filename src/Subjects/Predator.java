@@ -1,9 +1,11 @@
 package Subjects;
 
 import Map.Coordinate;
+import interfaces.Movable;
+
 import static Config.Settings.*;
 
-public class Predator extends Creature {
+public class Predator extends Creature implements Movable {
 
     private final char representSymbol = 'P';
     private char preySymbol = 'H';

@@ -27,10 +27,15 @@ public class Simulation {
           */
             for (var entity : map.getMapCopy().values()) {
 
-                if (entity.getClass().equals(Herbvore.class) || (entity.getClass().equals(Predator.class))) {
-                    ((Creature) entity).moveToPrey(map);
-                    ((Creature) entity).eat(map);
+                if (entity.getClass().equals(Herbvore.class)) {
+                    ((Herbvore) entity).moveToPrey(map);
+                    ((Herbvore) entity).eat(map);
                 }
+                if(entity.getClass().equals(Predator.class)){
+                    ((Predator) entity).moveToPrey(map);
+                    ((Predator) entity).eat(map);
+                }
+
 
             }
 
