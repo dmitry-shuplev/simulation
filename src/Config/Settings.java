@@ -7,7 +7,7 @@ public class Settings {
     public static final int MOVE_PRICE = 10;
     public static final int SEARCH_AREA = 200;
     public static int  HERBVORE_SATIATY = 100;
-    public static int  HERBVOR_LIFE=1;
+    public static int  HERBVOR_LIFE=3;
     public static int PREDATOR_SATIATY = 100;
     public static int PREDATOR_LIFE = 10;
     public static int GRASS_QUANTITY = 1;
@@ -20,10 +20,10 @@ public class Settings {
     }
 
     public enum Subjects {
-        ROCKS(1, "Rock"),
-        GRASS(1, "Grass"),
-        TREES(1, "Tree"),
-        HERBVORE(1, "Herbvore"),
+        ROCKS(10, "Rock"),
+        GRASS(10, "Grass"),
+        TREES(10, "Tree"),
+        HERBVORE(3, "Herbvore"),
         PREDSTOR(1, "Predator");
 
         private final int totalObjects;

@@ -88,9 +88,7 @@ public class MapComponents extends JComponent {
             return 'p';
         }
         if (currentMap.getMap().get(coordinate) != null) {
-            System.out.println(currentMap.getMap().get(coordinate).getOwnSimbols());
             return currentMap.getMap().get(coordinate).getOwnSimbols();
-
         }
         return 'E';
     }
