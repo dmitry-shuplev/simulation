@@ -51,7 +51,6 @@ public abstract class Creature extends Entity {
         int stepCounter = 0;
         queue.add(rootNode);
         Node processedNode = new Node();
-        int total_stap = 0; //log
         baseLoop:
         while (!queue.isEmpty()) {
             stepCounter++;
