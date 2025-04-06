@@ -31,14 +31,14 @@ public interface Movable {
         return false;
     }
 
-    Coordinate findPreyCoordinate(Map map, char symbol);
+    public abstract Coordinate findPreyCoordinate(Map map, char symbol);
+
+    public abstract ArrayList<Coordinate> findPath(Map map, Coordinate coordinate);
 
     Coordinate getCoordinate();
 
     void setCoordinate(Coordinate coordinate);
 
     char getPreySymbol();
-
-    ArrayList<Coordinate> findPath(Map map, Coordinate coordinate);
 
 }

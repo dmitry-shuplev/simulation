@@ -4,10 +4,13 @@ import Config.Settings;
 import Map.Coordinate;
 import Map.Map;
 import interfaces.Movable;
+import interfaces.Seeking;
+
+import java.util.ArrayList;
 
 import static Config.Settings.*;
 
-public class Herbvore extends Creature implements Movable {
+public class Herbvore extends Creature implements Movable, Seeking {
 
     private final char representSymbol = 'H';
     private final char preySymbol = 'G';
@@ -25,6 +28,16 @@ public class Herbvore extends Creature implements Movable {
     @Override
     public char getPreySymbol() {
         return preySymbol;
+    }
+
+    @Override
+    public Coordinate findPreyCoordinate(Map map, char symbol){
+        return Seeking.super.findPreyCoordinate(map, symbol);
+    }
+
+    @Override
+    public ArrayList<Coordinate> findPath(Map map, Coordinate coordinate){
+        return Seeking.super.findPath(map, coordinate);
     }
 
 
