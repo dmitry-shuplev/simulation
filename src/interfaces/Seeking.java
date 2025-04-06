@@ -20,7 +20,7 @@ public interface Seeking {
             wasChecked.add(currentNodeCoordinate);
             for (Coordinate nodeCoordinate : map.getNaighbors(currentNodeCoordinate)) {
                 if (!wasChecked.contains(nodeCoordinate) && !queue.contains(nodeCoordinate)) {
-                    if (!map.isFieldEmpty(nodeCoordinate) && map.getMap().get(nodeCoordinate).getView() == entityType) {
+                    if (!map.isFieldEmpty(nodeCoordinate) && map.getMap().get(nodeCoordinate).getOwnSimbols() == entityType) {
                         return nodeCoordinate;
                     }
                     queue.add(nodeCoordinate);

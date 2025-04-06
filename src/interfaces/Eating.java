@@ -10,7 +10,7 @@ public interface Eating {
             Entity entity = map.getEntityByCoordinate(neighborCoordinate);
 
             if (entity != null) {
-                if (entity.getView() == this.getPreySymbol()) {
+                if (entity.getOwnSimbols() == this.getPreySymbol()) {
                     entity.setLife(entity.getLife() - 1);
                 }
             }

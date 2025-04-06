@@ -5,11 +5,12 @@ import Map.*;
 
 
 public abstract class Entity {
-    private int life = 100;
-
-    public abstract char getView();
-
     private Coordinate coordinate;
+
+    private int life = 100;
+    private char represenSymbol;
+
+    public abstract char getOwnSimbols();
 
     public Coordinate getCoordinate() {
         return coordinate;

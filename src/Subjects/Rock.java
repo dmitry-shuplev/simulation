@@ -9,7 +9,9 @@ public class Rock extends Entity {
     public Rock(Coordinate coordinate) {
         setCoordinate(coordinate);
     }
-    public char getView() {
+
+    @Override
+    public char getOwnSimbols(){
         return representSymbol;
     }
 }

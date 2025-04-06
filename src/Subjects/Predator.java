@@ -20,13 +20,14 @@ public class Predator extends Creature implements Movable, Seeking, Eating {
         this.setLife(PREDATOR_LIFE);
     }
 
-    public char getView() {
-        return representSymbol;
-    }
-
     @Override
     public char getPreySymbol() {
         return preySymbol;
+    }
+
+    @Override
+    public char getOwnSimbols(){
+        return representSymbol;
     }
 
     @Override

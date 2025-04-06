@@ -19,6 +19,10 @@ public class Map {
     public HashMap<Coordinate, Entity> getMap() {
         return map;
     }
+    public HashMap<Coordinate, Entity> getMapCopy() {
+        return new HashMap<>(map);
+    }
+
 
     public boolean isFieldEmpty(Coordinate coordinate) {
        return !this.getMap().containsKey(coordinate);
@@ -33,11 +37,6 @@ public class Map {
     public void removeEntity(Coordinate coordinate) {
         this.getMap().remove(coordinate);
     }
-
-    public HashMap<Coordinate, Entity> getMapCopy() {
-        return new HashMap<>(map);
-    }
-
 
     public ArrayList<Coordinate> getNaighbors(Coordinate rootCoordinate) {
         ArrayList<Coordinate> neighudsCoordinate = new ArrayList<>();

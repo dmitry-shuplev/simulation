@@ -12,12 +12,9 @@ public class Grass extends Entity {
         this.setLife(GRASS_QUANTITY);
     }
 
-    public char getView() {
+    @Override
+    public char getOwnSimbols(){
         return representSymbol;
-    }
-
-    public void IncreaceQuantity(){
-       // quantity-=1;
     }
 
 

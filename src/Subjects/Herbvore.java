@@ -22,13 +22,14 @@ public class Herbvore extends Creature implements Movable, Seeking, Eating {
         this.setLife(HERBVOR_LIFE);
     }
 
-    public char getView() {
-        return representSymbol;
-    }
-
     @Override
     public char getPreySymbol() {
         return preySymbol;
+    }
+
+    @Override
+    public char getOwnSimbols(){
+        return representSymbol;
     }
 
     @Override

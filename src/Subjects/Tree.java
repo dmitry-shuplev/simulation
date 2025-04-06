@@ -9,7 +9,9 @@ private final char representSymbol = 'T';
         setCoordinate(coordinate);
     }
 
-    public char getView() {
+    @Override
+    public char getOwnSimbols(){
         return representSymbol;
     }
+
 }
