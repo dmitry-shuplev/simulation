@@ -29,7 +29,6 @@ public class Coordinate {
         int y = rand.nextInt(0, MAP_HEIGHT - 1);
         Coordinate coordinate = new Coordinate(x, y);
         if (!map.isFieldEmpty(coordinate)) {
-            System.out.println("Ошибка. Обьект с такими координатами уже существует.");
             getRandCoordinate(map);
         }
         return coordinate;
