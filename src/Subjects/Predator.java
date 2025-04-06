@@ -2,6 +2,7 @@ package Subjects;
 
 import Map.Coordinate;
 import Map.Map;
+import interfaces.Eating;
 import interfaces.Movable;
 import interfaces.Seeking;
 
@@ -9,7 +10,7 @@ import java.util.ArrayList;
 
 import static Config.Settings.*;
 
-public class Predator extends Creature implements Movable, Seeking {
+public class Predator extends Creature implements Movable, Seeking, Eating {
 
     private final char representSymbol = 'P';
     private char preySymbol = 'H';
@@ -36,5 +37,10 @@ public class Predator extends Creature implements Movable, Seeking {
     @Override
     public ArrayList<Coordinate> findPath(Map map, Coordinate coordinate){
         return Seeking.super.findPath(map, coordinate);
+    }
+
+    @Override
+    public void eat(Map map){
+        Eating.super.eat(map);
     }
 }

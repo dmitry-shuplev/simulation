@@ -3,7 +3,6 @@ import java.util.ArrayList;
 
 import Map.*;
 import Subjects.*;
-
 import static Config.Settings.*;
 import static java.lang.Thread.sleep;
 
