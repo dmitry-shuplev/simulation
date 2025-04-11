@@ -9,13 +9,13 @@ import java.util.ArrayList;
 
 public interface Movable {
 
-    public default void move(Settings.Direction direction, GameMap map) {
+    public default void move(Settings.Direction direction, GameMap gameMap) {
         Coordinate coordinate = getCoordinate();
-        Coordinate newCoordinate = coordinate.getNextStepCoordinate(direction);
-        if (map.isFieldEmpty(newCoordinate)) {
-            map.removeEntity(coordinate);
+        Coordinate newCoordinate = gameMap.getNextStepCoordinate(direction, coordinate);
+        if (gameMap.isFieldEmpty(newCoordinate)) {
+            gameMap.removeEntity(coordinate);
             this.setCoordinate(newCoordinate);
-            map.addEntity(newCoordinate, (Entity) this);
+            gameMap.addEntity(newCoordinate, (Entity) this);
         }
     }
 
@@ -26,7 +26,8 @@ public interface Movable {
             return true;
         }
         Coordinate nextStepCoordinate = path.getFirst();
-        Settings.Direction nextStep = this.getCoordinate().getDirection(nextStepCoordinate);
+       // Settings.Direction nextStep = this.getCoordinate().getDirection(nextStepCoordinate);
+        Settings.Direction nextStep = map.getDirection(this.getCoordinate(), nextStepCoordinate);
         this.move(nextStep, map);
         return false;
     }

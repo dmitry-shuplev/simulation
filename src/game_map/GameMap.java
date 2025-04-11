@@ -1,6 +1,7 @@
 package game_map;
 
 import subjects.*;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
@@ -21,19 +22,20 @@ public class GameMap {
     public HashMap<Coordinate, Entity> getMap() {
         return entities;
     }
+
     public HashMap<Coordinate, Entity> getMapCopy() {
         return new HashMap<>(entities);
     }
 
 
     public boolean isFieldEmpty(Coordinate coordinate) {
-       return !this.getMap().containsKey(coordinate);
+        return !this.getMap().containsKey(coordinate);
     }
 
     public void addEntity(Coordinate cordinate, Entity entity) {
-        if(this.isFieldEmpty(cordinate))
-        {
-            entities.put(cordinate, entity);}
+        if (this.isFieldEmpty(cordinate)) {
+            entities.put(cordinate, entity);
+        }
     }
 
     public void removeEntity(Coordinate coordinate) {
@@ -43,8 +45,9 @@ public class GameMap {
     public ArrayList<Coordinate> getNaighbors(Coordinate rootCoordinate) {
         ArrayList<Coordinate> neighudsCoordinate = new ArrayList<>();
         for (Direction direction : Direction.values()) {
-            if (!rootCoordinate.equals(rootCoordinate.getNextStepCoordinate(direction))) {
-                neighudsCoordinate.add(rootCoordinate.getNextStepCoordinate(direction));
+            Coordinate naighborCoordinate = getNextStepCoordinate(direction, rootCoordinate);
+            if (!rootCoordinate.equals(naighborCoordinate)) {
+                neighudsCoordinate.add(naighborCoordinate);
             }
         }
         return neighudsCoordinate;
@@ -105,6 +108,40 @@ public class GameMap {
         return coordinate;
     }
 
+    public Coordinate getNextStepCoordinate(Direction dir, Coordinate rootCoordinate) {
+        Coordinate coordinate = new Coordinate(rootCoordinate.x, rootCoordinate.y);
+        switch (dir) {
+            case UP:
+                coordinate.y -= 1;
+                break;
+            case DOWN:
+                coordinate.y += 1;
+                break;
+            case LEFT:
+                coordinate.x -= 1;
+                break;
+            case RIGHT:
+                coordinate.x += 1;
+                break;
+        }
+        return isCoordinateCorrect(coordinate)? coordinate:rootCoordinate;
+    }
+
+    public boolean isCoordinateCorrect(Coordinate coordinate) {
+        return coordinate.x >= 0 && coordinate.y >= 0 && coordinate.x < MAP_WIDTH && coordinate.y < MAP_HEIGHT;
+    }
+
+    public Direction getDirection(Coordinate current, Coordinate destinatinon) {
+        if (current.x == destinatinon.x && current.y < destinatinon.y) {
+            return Direction.DOWN;
+        } else if (current.x == destinatinon.x && current.y > destinatinon.y) {
+            return Direction.UP;
+        } else if (current.x > destinatinon.x && current.y == destinatinon.y) {
+            return Direction.LEFT;
+        } else if (current.x < destinatinon.x && current.y == destinatinon.y) {
+            return Direction.RIGHT;
+        } else return null;
+    }
 
 
 }
