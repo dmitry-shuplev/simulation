@@ -1,14 +1,14 @@
-package Subjects;
+package subjects;
 
-import Map.Coordinate;
-import Map.Map;
+import game_map.Coordinate;
+import game_map.GameMap;
 import interfaces.Eating;
 import interfaces.Movable;
 import interfaces.Seeking;
 
 import java.util.ArrayList;
 
-import static Config.Settings.*;
+import static config.Settings.*;
 
 public class Predator extends Creature implements Movable, Seeking, Eating {
 
@@ -31,17 +31,17 @@ public class Predator extends Creature implements Movable, Seeking, Eating {
     }
 
     @Override
-    public Coordinate findPreyCoordinate(Map map, char symbol){
+    public Coordinate findPreyCoordinate(GameMap map, char symbol){
         return Seeking.super.findPreyCoordinate(map, symbol);
     }
 
     @Override
-    public ArrayList<Coordinate> findPath(Map map, Coordinate coordinate){
+    public ArrayList<Coordinate> findPath(GameMap map, Coordinate coordinate){
         return Seeking.super.findPath(map, coordinate);
     }
 
     @Override
-    public void eat(Map map){
+    public void eat(GameMap map){
         Eating.super.eat(map);
     }
 }

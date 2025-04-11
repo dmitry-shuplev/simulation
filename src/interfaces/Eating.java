@@ -1,11 +1,11 @@
 package interfaces;
 
-import Map.Map;
-import Subjects.Entity;
-import Map.Coordinate;
+import game_map.GameMap;
+import subjects.Entity;
+import game_map.Coordinate;
 
 public interface Eating {
-    public default void eat(Map map) {
+    public default void eat(GameMap map) {
         for (Coordinate neighborCoordinate : map.getNaighbors(this.getCoordinate())) {
             Entity entity = map.getEntityByCoordinate(neighborCoordinate);
 

@@ -1,4 +1,4 @@
-package Config;
+package config;
 
 public class Settings {
     public static final int MAP_WIDTH = 25;

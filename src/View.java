@@ -1,4 +1,4 @@
-import Map.*;
+import game_map.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -6,7 +6,7 @@ import java.awt.*;
 public class View {
 private static JFrame frame = new JFrame();
 
-    public static void createViewMap(Map map){
+    public static void createViewMap(GameMap map){
         frame.setVisible(true);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(1200, 600);
@@ -18,7 +18,7 @@ private static JFrame frame = new JFrame();
 
     }
 
-    public static void updateMap(Map map){
+    public static void updateMap(GameMap map){
         MapComponents field = new MapComponents(map);
         frame.getContentPane().add(field, BorderLayout.CENTER);
         frame.repaint();

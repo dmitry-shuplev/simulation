@@ -1,11 +1,11 @@
 import javax.swing.*;
-import Config.Settings;
-import Map.*;
+import config.Settings;
+import game_map.*;
 import java.awt.*;
 import java.util.ArrayList;
 
 public class MapComponents extends JComponent {
-    private Map currentMap;
+    private GameMap currentMap;
     private Image predatorImage;
     private Image herbvoreImage;
     private Image grassImage;
@@ -13,11 +13,11 @@ public class MapComponents extends JComponent {
     private Image rockImage;
 
 
-    public MapComponents(Map map) {
+    public MapComponents(GameMap map) {
         this.currentMap = map;
     }
 
-    public MapComponents(Map map, ArrayList<Coordinate> path) {
+    public MapComponents(GameMap map, ArrayList<Coordinate> path) {
         this.currentMap = map;
     }
 

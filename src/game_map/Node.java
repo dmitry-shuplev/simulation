@@ -1,5 +1,5 @@
 
-package Map;
+package game_map;
 
 
 import java.util.ArrayList;

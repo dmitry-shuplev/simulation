@@ -1,19 +1,19 @@
-package Map;
+package game_map;
 
-import Subjects.*;
+import subjects.*;
 import java.util.ArrayList;
 import java.util.HashMap;
-import static Config.Settings.*;
+import static config.Settings.*;
 
 
-public class Map {
+public class GameMap {
 
     private HashMap<Coordinate, Entity> map = new HashMap<>();
     private ArrayList<Coordinate> path = new ArrayList<>();
 
-    public Map() {
+    public GameMap() {
         filingMap();
-        MapTamplate1.fillingMap(this);
+        MapTamplate.fillingMap(this);
     }
 
     public HashMap<Coordinate, Entity> getMap() {
@@ -59,7 +59,7 @@ public class Map {
     private void createSomeEntity(String entityName) {
         Coordinate coordinate = Coordinate.getRandCoordinate(this);
         try {
-            Class<?> clazz = Class.forName("Subjects." + entityName);
+            Class<?> clazz = Class.forName("subjects." + entityName);
             var constructor = clazz.getDeclaredConstructor(coordinate.getClass());
             Object entity = constructor.newInstance(coordinate);
             this.map.put(coordinate, (Entity) entity);

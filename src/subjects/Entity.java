@@ -1,7 +1,6 @@
-package Subjects;
+package subjects;
 
-import Config.Settings.*;
-import Map.*;
+import game_map.*;
 
 
 public abstract class Entity {

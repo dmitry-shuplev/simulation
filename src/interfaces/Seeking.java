@@ -1,17 +1,17 @@
 package interfaces;
 
-import Config.Settings;
-import Map.Coordinate;
-import Map.Map;
+import config.Settings;
+import game_map.Coordinate;
+import game_map.GameMap;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import static Config.Settings.SEARCH_AREA;
-import Map.*;
+import static config.Settings.SEARCH_AREA;
+import game_map.*;
 
 public interface Seeking {
-    public default Coordinate findPreyCoordinate(Map map, char entityType) {
+    public default Coordinate findPreyCoordinate(GameMap map, char entityType) {
         ArrayList<Coordinate> wasChecked = new ArrayList<>();
         ArrayList<Coordinate> queue = new ArrayList<>();
         queue.add(this.getCoordinate());
@@ -30,7 +30,7 @@ public interface Seeking {
         return Coordinate.getRandCoordinate(map);
     }
 
-    public default ArrayList<Coordinate> findPath(Map map, Coordinate targetCreatureCoordinate) {
+    public default ArrayList<Coordinate> findPath(GameMap map, Coordinate targetCreatureCoordinate) {
         ArrayList<Coordinate> path = new ArrayList<>();
         ArrayList<Node> queue = new ArrayList<>();
         ArrayList<Node> wasCheked = new ArrayList<>();

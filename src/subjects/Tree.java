@@ -1,6 +1,6 @@
-package Subjects;
+package subjects;
 
-import Map.Coordinate;
+import game_map.Coordinate;
 
 public class Tree extends Entity {
 private final char representSymbol = 'T';

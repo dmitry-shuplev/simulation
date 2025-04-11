@@ -1,9 +1,9 @@
-package Map;
+package game_map;
 
 import java.util.Objects;
 import java.util.Random;
 
-import static Config.Settings.*;
+import static config.Settings.*;
 
 public class Coordinate {
     public int x;
@@ -23,7 +23,7 @@ public class Coordinate {
         return this.x >= 0 && this.y >= 0 && this.x < MAP_WIDTH && this.y < MAP_HEIGHT;
     }
 
-    public static Coordinate getRandCoordinate(Map map) {
+    public static Coordinate getRandCoordinate(GameMap map) {
         Random rand = new Random();
         int x = rand.nextInt(0, MAP_WIDTH - 1);
         int y = rand.nextInt(0, MAP_HEIGHT - 1);

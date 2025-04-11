@@ -1,15 +1,15 @@
 package interfaces;
 
-import Config.Settings;
-import Map.Coordinate;
-import Map.Map;
-import Subjects.Entity;
+import config.Settings;
+import game_map.Coordinate;
+import game_map.GameMap;
+import subjects.Entity;
 
 import java.util.ArrayList;
 
 public interface Movable {
 
-    public default void move(Settings.Direction direction, Map map) {
+    public default void move(Settings.Direction direction, GameMap map) {
         Coordinate coordinate = getCoordinate();
         Coordinate newCoordinate = coordinate.getNextStepCoordinate(direction);
         if (map.isFieldEmpty(newCoordinate)) {
@@ -19,7 +19,7 @@ public interface Movable {
         }
     }
 
-    public default boolean moveToPrey(Map map) {
+    public default boolean moveToPrey(GameMap map) {
         Coordinate preyCoordinate = findPreyCoordinate(map, getPreySymbol());
         ArrayList<Coordinate> path = findPath(map, preyCoordinate);
         if (path.isEmpty()) {
@@ -31,9 +31,9 @@ public interface Movable {
         return false;
     }
 
-    public abstract Coordinate findPreyCoordinate(Map map, char symbol);
+    public abstract Coordinate findPreyCoordinate(GameMap map, char symbol);
 
-    public abstract ArrayList<Coordinate> findPath(Map map, Coordinate coordinate);
+    public abstract ArrayList<Coordinate> findPath(GameMap map, Coordinate coordinate);
 
     Coordinate getCoordinate();
 

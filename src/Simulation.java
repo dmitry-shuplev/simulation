@@ -1,15 +1,15 @@
 import java.util.ArrayList;
 
 
-import Map.*;
-import Subjects.*;
-import static Config.Settings.*;
+import game_map.*;
+import subjects.*;
+import static config.Settings.*;
 import static java.lang.Thread.sleep;
 
 public class Simulation {
 
     public static void main(String[] args) throws InterruptedException {
-        Map map = new Map();
+        GameMap map = new GameMap();
         View.createViewMap(map);
 
         ArrayList<Coordinate> path = new ArrayList<>();

@@ -1,8 +1,8 @@
 
-package Subjects;
+package subjects;
 
-import Map.Coordinate;
-import static Config.Settings.*;
+import game_map.Coordinate;
+import static config.Settings.*;
 
 public class Grass extends Entity {
     private final char representSymbol = 'G';
