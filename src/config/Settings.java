@@ -26,16 +26,16 @@ public class Settings {
         HERBVORE(3, "Herbvore"),
         PREDSTOR(1, "Predator");
 
-        private final int totalObjects;
+        private final int amountEntities;
         private final String entityName;
 
-        Subjects(int totalObjects, String entityName) {
-            this.totalObjects = totalObjects;
+        Subjects(int amountEntities, String entityName) {
+            this.amountEntities = amountEntities;
             this.entityName = entityName;
         }
 
-        public int getTotalObjects() {
-            return this.totalObjects;
+        public int getAmountEntities() {
+            return this.amountEntities;
         }
 
         public String getEntityName() {

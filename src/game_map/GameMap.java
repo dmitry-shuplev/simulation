@@ -55,7 +55,7 @@ public class GameMap {
 
     private void filingMap() {
         for (Subjects entity : Subjects.values()) {
-            for (int i = entity.getTotalObjects(); i > 0; i--) {
+            for (int i = entity.getAmountEntities(); i > 0; i--) {
                 createSomeEntity(entity.getEntityName());
             }
         }
