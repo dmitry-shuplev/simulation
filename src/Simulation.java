@@ -38,7 +38,7 @@ public class Simulation {
 
             }
 
-            Grass g =new Grass(Coordinate.getRandCoordinate(map));
+            Grass g =new Grass(map.getRandCoordinate());
             map.addEntity(g.getCoordinate(), g);
 
             map.clearMap();

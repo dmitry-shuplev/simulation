@@ -3,6 +3,8 @@ package game_map;
 import subjects.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
+
 import static config.Settings.*;
 
 
@@ -57,7 +59,7 @@ public class GameMap {
     }
 
     private void createSomeEntity(String entityName) {
-        Coordinate coordinate = Coordinate.getRandCoordinate(this);
+        Coordinate coordinate = this.getRandCoordinate();
         try {
             Class<?> clazz = Class.forName("subjects." + entityName);
             var constructor = clazz.getDeclaredConstructor(coordinate.getClass());
@@ -88,6 +90,20 @@ public class GameMap {
         return entities.get(coordinate);
     }
 
+    public static int getHeuristicCoast(Coordinate start, Coordinate finish) {
+        return (Math.abs(finish.x - start.x) + Math.abs(finish.y - start.y) - 1) * 10;
+    }
+
+    public Coordinate getRandCoordinate() {
+        Random rand = new Random();
+        int x = rand.nextInt(0, MAP_WIDTH - 1);
+        int y = rand.nextInt(0, MAP_HEIGHT - 1);
+        Coordinate coordinate = new Coordinate(x, y);
+        if (!this.isFieldEmpty(coordinate)) {
+            getRandCoordinate();
+        }
+        return coordinate;
+    }
 
 
 

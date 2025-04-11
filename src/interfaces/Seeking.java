@@ -27,7 +27,7 @@ public interface Seeking {
                 }
             }
         }
-        return Coordinate.getRandCoordinate(map);
+        return map.getRandCoordinate();
     }
 
     public default ArrayList<Coordinate> findPath(GameMap map, Coordinate targetCreatureCoordinate) {
@@ -56,7 +56,7 @@ public interface Seeking {
                     }
                     newNode.setParantNode(processedNode);
                     newNode.setCostMove(processedNode.getCostMove() + Settings.MOVE_PRICE);
-                    newNode.setCostMoveHeuristic(Coordinate.getHeuristicCoast(nodeCoordinate, targetCreatureCoordinate));
+                    newNode.setCostMoveHeuristic(GameMap.getHeuristicCoast(nodeCoordinate, targetCreatureCoordinate));
                     newNode.setCostMoveTotal(newNode.getCostMove() + newNode.getCostMoveHeuristic());
                     Node duplicateNode = newNode.getDuplicateFrom(queue);
                     if (duplicateNode == null) {

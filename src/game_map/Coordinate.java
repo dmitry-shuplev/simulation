@@ -14,25 +14,11 @@ public class Coordinate {
         this.y = y;
     }
 
-    public static int getHeuristicCoast(Coordinate start, Coordinate finish) {
-        return (Math.abs(finish.x - start.x) + Math.abs(finish.y - start.y) - 1) * 10;
-    }
-
 
     public boolean isCoordinateCorrect() {
         return this.x >= 0 && this.y >= 0 && this.x < MAP_WIDTH && this.y < MAP_HEIGHT;
     }
 
-    public static Coordinate getRandCoordinate(GameMap map) {
-        Random rand = new Random();
-        int x = rand.nextInt(0, MAP_WIDTH - 1);
-        int y = rand.nextInt(0, MAP_HEIGHT - 1);
-        Coordinate coordinate = new Coordinate(x, y);
-        if (!map.isFieldEmpty(coordinate)) {
-            getRandCoordinate(map);
-        }
-        return coordinate;
-    }
 
     public Coordinate getNextStepCoordinate(Direction direction) {
         Coordinate newCoordinate = new Coordinate(this.x, this.y);
