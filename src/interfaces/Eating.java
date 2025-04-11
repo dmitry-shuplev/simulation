@@ -12,6 +12,7 @@ public interface Eating {
             if (entity != null) {
                 if (entity.getOwnSimbols() == this.getPreySymbol()) {
                     entity.setLife(entity.getLife() - 1);
+                    break;
                 }
             }
         }
