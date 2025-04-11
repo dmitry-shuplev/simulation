@@ -89,7 +89,7 @@ public class GameMap {
         this.path = path;
     }
 
-    public Entity getEntityByCoordinate(Coordinate coordinate) {
+    public Entity get(Coordinate coordinate) {
         return entities.get(coordinate);
     }
 

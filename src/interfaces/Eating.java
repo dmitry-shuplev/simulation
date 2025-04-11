@@ -5,9 +5,9 @@ import subjects.Entity;
 import game_map.Coordinate;
 
 public interface Eating {
-    public default void eat(GameMap map) {
-        for (Coordinate neighborCoordinate : map.getNaighbors(this.getCoordinate())) {
-            Entity entity = map.getEntityByCoordinate(neighborCoordinate);
+    public default void eat(GameMap gameMap) {
+        for (Coordinate neighborCoordinate : gameMap.getNaighbors(this.getCoordinate())) {
+            Entity entity = gameMap.get(neighborCoordinate);
 
             if (entity != null) {
                 if (entity.getOwnSimbols() == this.getPreySymbol()) {
@@ -15,7 +15,6 @@ public interface Eating {
                 }
             }
         }
-
     }
 
     Coordinate getCoordinate();
