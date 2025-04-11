@@ -1,9 +1,6 @@
 package game_map;
 
 import java.util.Objects;
-import java.util.Random;
-
-import static config.Settings.*;
 
 public class Coordinate {
     public int x;

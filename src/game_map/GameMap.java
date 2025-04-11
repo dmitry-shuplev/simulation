@@ -1,16 +1,16 @@
 package game_map;
 
+import config.Settings;
 import subjects.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
-
-import static config.Settings.*;
-
+import config.Settings.*;
 
 public class GameMap {
-
+    private final int MAP_WIDTH = Settings.MAP_WIDTH;
+    private final int MAP_HEIGHT = Settings.MAP_HEIGHT;
     private HashMap<Coordinate, Entity> entities = new HashMap<>();
     private ArrayList<Coordinate> path = new ArrayList<>();
 
@@ -124,7 +124,7 @@ public class GameMap {
                 coordinate.x += 1;
                 break;
         }
-        return isCoordinateCorrect(coordinate)? coordinate:rootCoordinate;
+        return isCoordinateCorrect(coordinate) ? coordinate : rootCoordinate;
     }
 
     public boolean isCoordinateCorrect(Coordinate coordinate) {

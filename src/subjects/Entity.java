@@ -2,7 +2,6 @@ package subjects;
 
 import game_map.*;
 
-
 public abstract class Entity {
     private Coordinate coordinate;
 

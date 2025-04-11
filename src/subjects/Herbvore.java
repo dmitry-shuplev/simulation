@@ -1,5 +1,6 @@
 package subjects;
 
+import config.Settings;
 import game_map.Coordinate;
 import game_map.GameMap;
 import interfaces.Eating;
@@ -8,17 +9,13 @@ import interfaces.Seeking;
 
 import java.util.ArrayList;
 
-import static config.Settings.*;
-
 public class Herbvore extends Creature implements Movable, Seeking, Eating {
 
     private final char representSymbol = 'H';
     private final char preySymbol = 'G';
-    private int satiaty = HERBVORE_SATIATY;
-
     public Herbvore(Coordinate coordinate) {
         setCoordinate(coordinate);
-        this.setLife(HERBVOR_LIFE);
+        this.setLife(Settings.HERBVOR_LIFE);
     }
 
     @Override

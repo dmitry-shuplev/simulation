@@ -1,7 +1,5 @@
 
 package game_map;
-
-
 import java.util.ArrayList;
 
 public class Node {

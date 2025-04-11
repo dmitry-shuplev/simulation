@@ -1,5 +1,6 @@
 package subjects;
 
+import config.Settings;
 import game_map.Coordinate;
 import game_map.GameMap;
 import interfaces.Eating;
@@ -8,8 +9,6 @@ import interfaces.Seeking;
 
 import java.util.ArrayList;
 
-import static config.Settings.*;
-
 public class Predator extends Creature implements Movable, Seeking, Eating {
 
     private final char representSymbol = 'P';
@@ -17,7 +16,7 @@ public class Predator extends Creature implements Movable, Seeking, Eating {
 
     public Predator(Coordinate coordinate) {
         setCoordinate(coordinate);
-        this.setLife(PREDATOR_LIFE);
+        this.setLife(Settings.PREDATOR_LIFE);
     }
 
     @Override

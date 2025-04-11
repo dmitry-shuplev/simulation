@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 
-
 import game_map.*;
 import subjects.*;
 import static config.Settings.*;
