@@ -8,7 +8,7 @@ import static config.Settings.*;
 
 public class GameMap {
 
-    private HashMap<Coordinate, Entity> map = new HashMap<>();
+    private HashMap<Coordinate, Entity> entities = new HashMap<>();
     private ArrayList<Coordinate> path = new ArrayList<>();
 
     public GameMap() {
@@ -17,10 +17,10 @@ public class GameMap {
     }
 
     public HashMap<Coordinate, Entity> getMap() {
-        return map;
+        return entities;
     }
     public HashMap<Coordinate, Entity> getMapCopy() {
-        return new HashMap<>(map);
+        return new HashMap<>(entities);
     }
 
 
@@ -31,7 +31,7 @@ public class GameMap {
     public void addEntity(Coordinate cordinate, Entity entity) {
         if(this.isFieldEmpty(cordinate))
         {
-        map.put(cordinate, entity);}
+            entities.put(cordinate, entity);}
     }
 
     public void removeEntity(Coordinate coordinate) {
@@ -62,7 +62,7 @@ public class GameMap {
             Class<?> clazz = Class.forName("subjects." + entityName);
             var constructor = clazz.getDeclaredConstructor(coordinate.getClass());
             Object entity = constructor.newInstance(coordinate);
-            this.map.put(coordinate, (Entity) entity);
+            this.entities.put(coordinate, (Entity) entity);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -71,7 +71,7 @@ public class GameMap {
     public void clearMap() {
         for (Entity entity : this.getMapCopy().values()) {
             if (entity.getLife() <= 0) {
-                map.remove(entity.getCoordinate());
+                entities.remove(entity.getCoordinate());
             }
         }
     }
@@ -85,7 +85,7 @@ public class GameMap {
     }
 
     public Entity getEntityByCoordinate(Coordinate coordinate) {
-        return map.get(coordinate);
+        return entities.get(coordinate);
     }
 
 
