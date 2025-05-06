@@ -8,13 +8,16 @@ import static config.Settings.*;
 import static java.lang.Thread.sleep;
 
 public class Simulation {
+    static int stepsNumber = 0;
+    static boolean flag = false;
+    static GameMap map;
 
     public static void main(String[] args) throws InterruptedException {
-        int stepsNumber = 0;
-        GameMap map = new GameMap();
+
+        map = new GameMap();
         View.createViewMap(map);
 
-        startSimulation(stepsNumber,map);
+        startSimulation(stepsNumber, map);
 
     }
 
@@ -39,12 +42,12 @@ public class Simulation {
 
         map.clearMap();
         View.updateMap(map);
-        return stepNumber+1;
+        return stepNumber + 1;
     }
 
     private static void startSimulation(int stepNumber, GameMap map) {
-        while (true) {
-            if (stepNumber>STEPS){
+        while (flag) {
+            if (stepNumber > STEPS) {
                 System.out.println("Программа закончила работу.По превышению количества шагов.");
                 System.exit(0);
             }
@@ -55,5 +58,14 @@ public class Simulation {
             }
         }
 
+    }
+
+    public static void start() {
+        flag = true;
+        new Thread(() -> startSimulation(stepsNumber, map)).start();
+    }
+
+    public static void pause(){
+        flag = false;
     }
 }
