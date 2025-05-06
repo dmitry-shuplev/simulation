@@ -1,3 +1,5 @@
+package view;
+
 import game_map.*;
 
 import javax.swing.*;

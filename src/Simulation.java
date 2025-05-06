@@ -2,6 +2,8 @@ import java.util.ArrayList;
 
 import game_map.*;
 import subjects.*;
+import view.View;
+
 import static config.Settings.*;
 import static java.lang.Thread.sleep;
 

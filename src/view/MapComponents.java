@@ -1,3 +1,5 @@
+package view;
+
 import javax.swing.*;
 import config.Settings;
 import game_map.*;
