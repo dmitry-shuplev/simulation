@@ -4,9 +4,12 @@ import game_map.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class View {
 private static JFrame frame = new JFrame();
+private static JButton startSimulation;
 
     public static void createViewMap(GameMap map){
         frame.setVisible(true);
@@ -17,6 +20,13 @@ private static JFrame frame = new JFrame();
 
         MapComponents field = new MapComponents(map);
         frame.getContentPane().add(field, BorderLayout.CENTER);
+
+        JPanel buttonPanel = new JPanel();
+        JButton startButton = new JButton("Start");
+
+        buttonPanel.add(startButton);
+
+       frame.add(buttonPanel, BorderLayout.SOUTH);
 
     }
 

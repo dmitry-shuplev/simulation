@@ -1,6 +1,5 @@
-import java.util.ArrayList;
+package simulation;
 
-import config.Settings;
 import game_map.*;
 import subjects.*;
 import view.View;
