@@ -40,7 +40,7 @@ public class Predator extends Creature implements Movable, Seeking, Eating {
     }
 
     @Override
-    public void eat(GameMap map){
+    public void eat(GameMap map) throws InterruptedException {
         Eating.super.eat(map);
     }
 }

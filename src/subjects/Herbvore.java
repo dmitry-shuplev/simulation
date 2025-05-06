@@ -39,7 +39,7 @@ public class Herbvore extends Creature implements Movable, Seeking, Eating {
     }
 
     @Override
-    public void eat(GameMap map){
+    public void eat(GameMap map) throws InterruptedException {
         Eating.super.eat(map);
     }
 

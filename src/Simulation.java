@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Map;
 
 import game_map.*;
 import subjects.*;
@@ -18,6 +19,7 @@ public class Simulation {
         for (int i = 0; i < STEPS; i++) {
             map.getPath().clear();
 
+            nextTurn(map);
            /*
            Этот код может показывать проложенный путь. использовался для настройки алгоритма поиска пути.
            path = pr1.findPath(map, preyCoordinate);
@@ -25,31 +27,41 @@ public class Simulation {
                 map.getPath().add(coordinate);
             }
           */
-            for (var entity : map.getMapCopy().values()) {
-
-                if (entity.getClass().equals(Herbvore.class)) {
-                    ((Herbvore) entity).moveToPrey(map);
-                    ((Herbvore) entity).eat(map);
-                }
-                if(entity.getClass().equals(Predator.class)){
-                    ((Predator) entity).moveToPrey(map);
-                    ((Predator) entity).eat(map);
-                }
-
-
-            }
 
             Grass g =new Grass(map.getRandCoordinate());
             map.addEntity(g.getCoordinate(), g);
 
-            map.clearMap();
-            View.updateMap(map);
-            sleep(1000);
+
 //Здесь основной цикл программы
         }
 
 
         System.out.println("Закончено");
         //  System.exit(0);
+    }
+
+
+    private static void nextTurn(GameMap map) throws InterruptedException {
+        for (var entity : map.getMapCopy().values()) {
+
+            if (entity instanceof Herbvore) {
+                ((Herbvore) entity).moveToPrey(map);
+            }
+            if(entity instanceof Predator){
+                ((Predator) entity).moveToPrey(map);
+            }
+            View.updateMap(map);
+            if (entity instanceof Herbvore) {
+                ((Herbvore) entity).eat(map);
+            }
+            if(entity instanceof Predator){
+                ((Predator) entity).eat(map);
+            }
+
+        }
+
+        map.clearMap();
+        View.updateMap(map);
+       sleep(500);
     }
 }
