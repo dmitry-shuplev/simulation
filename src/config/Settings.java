@@ -3,7 +3,7 @@ package config;
 public class Settings {
     public static final int MAP_WIDTH = 25;
     public static final int MAP_HEIGHT = 10;
-    public static final int STEPS = 100;
+    public static final int STEPS = 5;
     public static final int MOVE_PRICE = 10;
     public static final int SEARCH_AREA = 200;
     public static int HERBVORE_SATIATY = 100;

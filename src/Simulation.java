@@ -1,6 +1,6 @@
 import java.util.ArrayList;
-import java.util.Map;
 
+import config.Settings;
 import game_map.*;
 import subjects.*;
 import view.View;
@@ -11,57 +11,50 @@ import static java.lang.Thread.sleep;
 public class Simulation {
 
     public static void main(String[] args) throws InterruptedException {
+        int stepsNumber = 0;
         GameMap map = new GameMap();
         View.createViewMap(map);
 
-        ArrayList<Coordinate> path = new ArrayList<>();
+        startSimulation(stepsNumber,map);
 
-        for (int i = 0; i < STEPS; i++) {
-            map.getPath().clear();
-
-            nextTurn(map);
-           /*
-           Этот код может показывать проложенный путь. использовался для настройки алгоритма поиска пути.
-           path = pr1.findPath(map, preyCoordinate);
-            for (Coordinate coordinate : path) {
-                map.getPath().add(coordinate);
-            }
-          */
-
-            Grass g =new Grass(map.getRandCoordinate());
-            map.addEntity(g.getCoordinate(), g);
-
-
-//Здесь основной цикл программы
-        }
-
-
-        System.out.println("Закончено");
-        //  System.exit(0);
     }
 
 
-    private static void nextTurn(GameMap map) throws InterruptedException {
+    private static int nextTurn(int stepNumber, GameMap map) throws InterruptedException {
+        sleep(800);
         for (var entity : map.getMapCopy().values()) {
 
             if (entity instanceof Herbvore) {
                 ((Herbvore) entity).moveToPrey(map);
             }
-            if(entity instanceof Predator){
+            if (entity instanceof Predator) {
                 ((Predator) entity).moveToPrey(map);
             }
-            View.updateMap(map);
             if (entity instanceof Herbvore) {
                 ((Herbvore) entity).eat(map);
             }
-            if(entity instanceof Predator){
+            if (entity instanceof Predator) {
                 ((Predator) entity).eat(map);
             }
-
         }
 
         map.clearMap();
         View.updateMap(map);
-       sleep(500);
+        return stepNumber+1;
+    }
+
+    private static void startSimulation(int stepNumber, GameMap map) {
+        while (true) {
+            if (stepNumber>STEPS){
+                System.out.println("Программа закончила работу.По превышению количества шагов.");
+                System.exit(0);
+            }
+            try {
+                stepNumber = nextTurn(stepNumber, map);
+            } catch (InterruptedException e) {
+                System.out.println("Ошибка потоков из за искользования sleep.");
+            }
+        }
+
     }
 }
