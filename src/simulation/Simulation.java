@@ -8,7 +8,7 @@ import static config.Settings.*;
 import static java.lang.Thread.sleep;
 
 public class Simulation {
-    static int stepsNumber = 0;
+    static int stepsCounter = 0;
     static boolean flag = false;
     static GameMap map;
 
@@ -16,13 +16,12 @@ public class Simulation {
 
         map = new GameMap();
         View.createViewMap(map);
-
-        startSimulation(stepsNumber, map);
+        startSimulation(0, map);
 
     }
 
 
-    private static int nextTurn(int stepNumber, GameMap map) throws InterruptedException {
+    private static void nextTurn(GameMap map) throws InterruptedException {
         sleep(800);
         for (var entity : map.getMapCopy().values()) {
 
@@ -42,17 +41,18 @@ public class Simulation {
 
         map.clearMap();
         View.updateMap(map);
-        return stepNumber + 1;
+        stepsCounter++;
+        View.updateStepsLabel();
     }
 
     private static void startSimulation(int stepNumber, GameMap map) {
         while (flag) {
-            if (stepNumber > STEPS) {
+            if (stepsCounter > STEPS) {
                 System.out.println("Программа закончила работу.По превышению количества шагов.");
                 System.exit(0);
             }
             try {
-                stepNumber = nextTurn(stepNumber, map);
+                nextTurn(map);
             } catch (InterruptedException e) {
                 System.out.println("Ошибка потоков из за искользования sleep.");
             }
@@ -62,14 +62,18 @@ public class Simulation {
 
     public static void start() {
         flag = true;
-        new Thread(() -> startSimulation(stepsNumber, map)).start();
+        new Thread(() -> startSimulation(stepsCounter, map)).start();
     }
 
-    public static void pause(){
+    public static void pause() {
         flag = false;
     }
 
-    public static void stop(){
+    public static void stop() {
         System.exit(0);
+    }
+
+    public static int getStepsNumber() {
+        return stepsCounter;
     }
 }

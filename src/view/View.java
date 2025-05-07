@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 
 public class View {
     private static JFrame frame = new JFrame();
-    private static JButton startSimulation;
+    static private JLabel stepsLabel;
 
     public static void createViewMap(GameMap map) {
         frame.setVisible(true);
@@ -52,7 +52,14 @@ public class View {
         buttonPanel.add(pauseButton);
         buttonPanel.add(stopButton);
 
-        frame.add(buttonPanel, BorderLayout.SOUTH);
+        JPanel stepsPanel = new JPanel(); // Новая панель для счетчика шагов
+        stepsLabel = new JLabel("Шаги: 0"); // Создание JLabel для отображения шагов
+        stepsPanel.add(stepsLabel); // Добавление JLabel на панель счетчика шагов
+
+        // Добавление панелей в окно
+        frame.getContentPane().add(buttonPanel, BorderLayout.SOUTH); // Панель кнопок
+        frame.getContentPane().add(stepsPanel, BorderLayout.NORTH); // Панель счетчика шагов
+
 
     }
 
@@ -60,6 +67,11 @@ public class View {
         MapComponents field = new MapComponents(map);
         frame.getContentPane().add(field, BorderLayout.CENTER);
         frame.repaint();
+    }
+
+    public static void updateStepsLabel() { // Метод для обновления счетчика шагов
+        int steps = Simulation.getStepsNumber();
+        stepsLabel.setText("Шаги: " + steps); // Обновление текста JLabel
     }
 
 }
