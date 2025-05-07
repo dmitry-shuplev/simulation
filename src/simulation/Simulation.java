@@ -68,4 +68,8 @@ public class Simulation {
     public static void pause(){
         flag = false;
     }
+
+    public static void stop(){
+        System.exit(0);
+    }
 }

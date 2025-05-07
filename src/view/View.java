@@ -33,7 +33,6 @@ public class View {
         });
 
         JButton pauseButton = new JButton("Pause");
-
         pauseButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -41,8 +40,17 @@ public class View {
             }
         });
 
+        JButton stopButton = new JButton("Stop");
+        stopButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Simulation.stop();
+            }
+        });
+
         buttonPanel.add(startButton);
         buttonPanel.add(pauseButton);
+        buttonPanel.add(stopButton);
 
         frame.add(buttonPanel, BorderLayout.SOUTH);
 
